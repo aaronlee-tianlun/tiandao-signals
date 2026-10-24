@@ -121,11 +121,31 @@ jobs:
               print(f'::warning::trade_date={td} 与今天 {today} 不一致（非交易日可忽略）')
           PY
 
+      - name: Dated copy
+        run: |
+          python - <<'PY'
+          import json, pathlib, shutil, datetime
+          p = pathlib.Path('out/daily_signals.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          ymd = (str(d.get('trade_date') or datetime.date.today().isoformat())).replace('-', '')
+          for n in ('daily_signals', 'all_signals'):
+              src = pathlib.Path(f'out/{n}.json')
+              if src.exists():
+                  shutil.copyfile(src, pathlib.Path(f'out/{n}_{ymd}.json'))
+                  print('dated', n, ymd)
+          keep = {(datetime.date.today() - datetime.timedelta(days=i)).strftime('%Y%m%d') for i in range(7)}
+          for f in pathlib.Path('out').glob('*_20*.json'):
+              ymd2 = f.stem.split('_')[-1]
+              if ymd2 not in keep:
+                  f.unlink()
+                  print('cleanup', f.name)
+          PY
+
       - name: Commit results
         run: |
           git config user.name "tiandao-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -f out/daily_signals.json out/all_signals.json
+          git add -f out/daily_signals.json out/all_signals.json 'out/*_20*.json'
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0
