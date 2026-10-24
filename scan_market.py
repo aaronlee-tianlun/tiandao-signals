@@ -67,6 +67,44 @@ def _safe_dump(obj, path: Path) -> bool:
     return True
 
 
+
+def _split_payload(out: dict) -> tuple[dict, dict]:
+    """拆成两份：daily（入场灯>=4 + 全部推荐，给 App 首页）+ all（全市场精简版）"""
+    items = out.get("items") or []
+    daily_items = [x for x in items
+                   if int(x.get("entry_green") or 0) >= 4 or x.get("recommended")]
+    daily = dict(out)
+    daily["items"] = daily_items
+    daily["universe_full"] = out.get("universe")
+    daily["scanned_full"] = out.get("scanned")
+    daily["filter_note"] = "daily 只含入场灯>=4（含全部6/6推荐）；全市场精简版见 all_signals.json"
+
+    lite = [{
+        "code": x.get("code"), "name": x.get("name"), "close": x.get("close"),
+        "entry_green": x.get("entry_green"), "green_count": x.get("green_count"),
+        "recommended": bool(x.get("recommended")), "summary": x.get("summary", ""),
+        "date": x.get("date", ""), "board": x.get("board"),
+    } for x in items]
+    allsig = {
+        "generated_at": out.get("generated_at"), "trade_date": out.get("trade_date"),
+        "universe": out.get("universe"), "scanned": out.get("scanned"),
+        "failed": out.get("failed"), "status": out.get("status"),
+        "recommended_count": out.get("recommended_count"),
+        "recommend_rule": out.get("recommend_rule", ""), "lite": True, "items": lite,
+    }
+    return daily, allsig
+
+
+def write_outputs(out: dict, target: Path) -> bool:
+    """写 daily + all 两个文件；分片输出（part-*.json）保持原样"""
+    if target.name != "daily_signals.json":
+        return _safe_dump(out, target)
+    daily, allsig = _split_payload(out)
+    ok1 = _safe_dump(daily, target)
+    ok2 = _safe_dump(allsig, target.with_name("all_signals.json"))
+    return ok1 and ok2
+
+
 # ------------------------------------------------------------------ 快照
 
 
@@ -227,7 +265,7 @@ def run(top: int, show: int, shard: str = "0/1", out_path: str = "",
         out["items"] = good
         out["failed"] = len(failed)
         out["scanned"] = len(good)
-        _safe_dump(out, target)
+        write_outputs(out, target)
 
     print(f"\n{'代码':<8}{'名称':<10}{'收盘':>8}  {'入场':<6}{'绿灯':<6}结论")
     for x in results[:show]:
@@ -278,7 +316,7 @@ def merge(patterns: list[str], out_path: str) -> dict:
         "items": uniq,
     }
     target = Path(out_path)
-    if not _safe_dump(out, target):
+    if not write_outputs(out, target):
         raise SystemExit("合并后写入失败")
     print(f"合并完成：{len(uniq)} 只 → {target}")
     return out
