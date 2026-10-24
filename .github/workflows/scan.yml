@@ -1,13 +1,14 @@
 name: daily-scan
 
-# 每个交易日 15:50（北京时间）自动扫全市场；也可手动触发
+# 每个交易日 15:50（北京时间）自动扫全市场
+# 4 分片并行（每个 runner 换 IP，避免单 IP 限流），最后一个 job 合并提交
 on:
   schedule:
-    - cron: '50 7 * * 1-5'   # UTC 07:50 = 北京 15:50，收盘数据已定型，避开整点拥堵
+    - cron: '50 7 * * 1-5'   # UTC 07:50 = 北京 15:50
   workflow_dispatch:
     inputs:
       limit:
-        description: '扫描数量（测试填 50，全市场填 5000）'
+        description: '扫描数量（测试填 500，全市场填 5000）'
         default: '5000'
 
 concurrency:
@@ -17,7 +18,53 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 200
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    env:
+      TZ: Asia/Shanghai
+      SHARDS: '4'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Scan shard ${{ matrix.shard }}
+        timeout-minutes: 105
+        env:
+          NO_PROXY: '*'
+        run: |
+          python scan_market.py \
+            --top "${{ github.event.inputs.limit || '5000' }}" \
+            --shard "${{ matrix.shard }}/4" \
+            --workers 2 \
+            --deadline-min 95 \
+            --out "out/part-${{ matrix.shard }}.json" \
+            --limit 0
+
+      - name: Upload shard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.shard }}
+          path: out/part-${{ matrix.shard }}.json
+          retention-days: 2
+          if-no-files-found: ignore
+
+  publish:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     env:
@@ -34,25 +81,17 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
-      - name: Scan market
-        timeout-minutes: 170
-        env:
-          NO_PROXY: '*'
-        run: |
-          # 165 分钟软时限：到点自动输出 partial，绝不空手而归
-          python scan_market.py \
-            --top "${{ github.event.inputs.limit || '5000' }}" \
-            --deadline-min 165 \
-            --limit 30
-
-      - name: Upload partial (on failure)
-        if: failure()
-        uses: actions/upload-artifact@v4
+      - name: Download shards
+        uses: actions/download-artifact@v4
         with:
-          name: signals-partial-${{ github.run_id }}
-          path: out/*.json
-          retention-days: 3
-          if-no-files-found: ignore
+          pattern: part-*
+          path: out
+          merge-multiple: true
+
+      - name: Merge shards
+        run: |
+          ls -la out/ || true
+          python scan_market.py --merge "out/part-*.json" --out out/daily_signals.json
 
       - name: Show health
         run: |
@@ -60,7 +99,7 @@ jobs:
           import json, pathlib, datetime
           p = pathlib.Path('out/daily_signals.json')
           if not p.exists():
-              raise SystemExit('没有产出 daily_signals.json，扫描失败')
+              raise SystemExit('没有产出 daily_signals.json，本次不提交')
           d = json.loads(p.read_text(encoding='utf-8'))
           size = p.stat().st_size
           print('status', d.get('status'), '| universe', d.get('universe'),
@@ -69,17 +108,14 @@ jobs:
                 '| trade_date', d.get('trade_date'),
                 '| fresh', d.get('fresh_count'),
                 '| size', f'{size/1048576:.1f} MiB')
-          st = d.get('status')
-          if st == 'degraded':
-              raise SystemExit('数据源大面积失败（degraded），本次不提交')
+          if d.get('scanned', 0) < 50:
+              raise SystemExit(f"只扫到 {d.get('scanned')} 只，数据不可信，不提交")
           if size > 18 * 1048576:
-              raise SystemExit(f'产出 {size/1048576:.1f} MiB 超过 18MB（jsDelivr 单文件上限 20MB），拒绝提交')
-          if st == 'partial':
-              print('::warning::本次为 partial（到达时限），数据仍可用但不完整')
+              raise SystemExit(f'产出 {size/1048576:.1f} MiB 超过 18MB（jsDelivr 上限 20MB）')
           td = str(d.get('trade_date') or '')
           today = datetime.datetime.now().strftime('%Y-%m-%d')
           if td and td[:10] != today:
-              print(f'::warning::trade_date={td} 与今天 {today} 不一致（节假日/停盘可忽略）')
+              print(f'::warning::trade_date={td} 与今天 {today} 不一致（非交易日可忽略）')
           PY
 
       - name: Commit results
@@ -98,12 +134,3 @@ jobs:
         run: |
           curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/daily_signals.json" || true
           echo "jsDelivr 缓存已请求清除"
-
-      - name: Keep artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: signals-${{ github.run_id }}
-          path: out/daily_signals.json
-          retention-days: 3
-          if-no-files-found: ignore
