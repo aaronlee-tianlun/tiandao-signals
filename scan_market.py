@@ -116,7 +116,8 @@ def scan_one(row: dict, p: Params, names: dict) -> tuple[str, dict]:
             "name": row.get("name") or names.get(code, ""),
             "board": row.get("board"),
         })
-        res["recommended"] = bool(res["entry_signal"])
+        # 用户口径：至少 6 个入场灯全绿才推，5/6 一律不推
+        res["recommended"] = bool(res["entry_signal"] and int(res.get("entry_green") or 0) >= 6)
         try:
             fin = financial_snapshot(code)
             val = valuation(code, float(res["close"]), fin)
