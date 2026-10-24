@@ -23,6 +23,18 @@ from indicators import Params, evaluate
 OUT_DIR = Path(__file__).parent / "out"
 
 
+def _clean(obj):
+    """把 NaN/Inf 换成 None，保证 JSON 合规（一只票的脏数据不能废掉整批扫描）"""
+    import math
+    if isinstance(obj, float):
+        return obj if math.isfinite(obj) else None
+    if isinstance(obj, dict):
+        return {k: _clean(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_clean(v) for v in obj]
+    return obj
+
+
 def universe() -> list[dict]:
     """全市场快照。东财 → 新浪 依次尝试。"""
     import akshare as ak
@@ -96,6 +108,7 @@ def run(top: int, show: int) -> dict:
     out = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "trade_date": max(dates) if dates else "",
+        "fresh_count": sum(1 for d in dates if d == (max(dates) if dates else "")),
         "universe": len(rows),
         "scanned": len(results),
         "failed": len(failed),
@@ -107,7 +120,8 @@ def run(top: int, show: int) -> dict:
         "items": results,
     }
     OUT_DIR.mkdir(exist_ok=True)
-    payload = json.dumps(out, ensure_ascii=False, indent=2, allow_nan=False)  # 有 NaN 立刻炸在扫描端
+    out = _clean(out)  # NaN/Inf -> None，绝不因为一只票炸掉整批
+    payload = json.dumps(out, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
     tmp = OUT_DIR / "daily_signals.json.tmp"
     tmp.write_text(payload, encoding="utf-8")
     os.replace(tmp, OUT_DIR / "daily_signals.json")
