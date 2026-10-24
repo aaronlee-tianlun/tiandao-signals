@@ -1,0 +1,6813 @@
+{
+  "generated_at": "2026-10-24T17:40:46",
+  "trade_date": "2026-10-23",
+  "universe": 48,
+  "scanned": 47,
+  "failed": 1,
+  "failed_sample": [
+    {
+      "code": "688825",
+      "error": "RuntimeError: 688825 所有数据源均失败 → sina: 数据不足(59行); tencent: 数据不足(59行); eastmoney: 数据不足(59行)"
+    }
+  ],
+  "providers": [
+    "sina"
+  ],
+  "status": "ok",
+  "recommend_rule": "四条硬条件（周线趋势/回踩/金叉/量能）+ 站上 MA21",
+  "recommended_count": 0,
+  "items": [
+    {
+      "date": "2026-10-23",
+      "close": 16.19,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 16.59,
+            "周变化": "-1.10%",
+            "周收盘": 16.19
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.10%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-14.56%",
+            "MA21": 16.06,
+            "距MA21": "+0.82%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 14.6% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.5449,
+            "DIF/价": "-3.37%",
+            "DEA": -0.5756
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.4%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -0.5449,
+            "DEA": -0.5756,
+            "柱": 0.0614,
+            "状态": "今日金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 0 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 16.19,
+            "MA5": 14.85,
+            "涨跌幅": "+4.12%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +4.12% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "量比": 3.18,
+            "档位": "明显放量",
+            "今日量(万股)": 46181.6
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 3.18（明显放量），资金进场"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+0.82%",
+            "MA21": 16.06,
+            "距20日高点": "-14.56%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +0.8%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 5,
+      "total": 7,
+      "entry_green": 4,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 周线趋势(MA13周)，等信号齐",
+      "summary": "观察：缺 周线趋势(MA13周)，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 16.19,
+        "chg_pct": 4.1158,
+        "ma5": 14.846,
+        "ma21": 16.0576,
+        "ma13w": 16.5908,
+        "dif": -0.544923,
+        "dea": -0.575647,
+        "vol_ratio": 3.1779,
+        "hi20": 18.95,
+        "drawdown_from_high": -14.5646,
+        "week_incomplete": false
+      },
+      "code": "002185",
+      "name": "华天科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1012177765.97,
+        "eps": 0.2483,
+        "bps": 5.7179,
+        "roe": 4.44,
+        "gross_margin": 14.3418,
+        "net_margin": 8.0693,
+        "debt_ratio": 51.507,
+        "op_margin": 9.3085,
+        "pe": 32.6,
+        "eps_annualized": 0.497,
+        "pb": 2.83,
+        "text": "（20260630）ROE 4.44%，毛利率 14.3418%，净利率 8.0693%，资产负债率 51.507%，PE 32.6，PB 2.83"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 214.04,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 194.95,
+            "周变化": "-0.26%",
+            "周收盘": 214.04
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.26%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-6.43%",
+            "MA21": 199.79,
+            "距MA21": "+7.13%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 6.4% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 0.4742,
+            "DIF/价": "+0.22%",
+            "DEA": -0.0394
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF +0.22%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 0.4742,
+            "DEA": -0.0394,
+            "柱": 1.0272,
+            "状态": "今日金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 0 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 214.04,
+            "MA5": 194.35,
+            "涨跌幅": "+8.76%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +8.76% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.21,
+            "档位": "正常",
+            "今日量(万股)": 2207.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.21（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+7.13%",
+            "MA21": 199.79,
+            "距20日高点": "-6.43%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +7.1%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 5,
+      "total": 7,
+      "entry_green": 4,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "summary": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 214.04,
+        "chg_pct": 8.7602,
+        "ma5": 194.346,
+        "ma21": 199.7857,
+        "ma13w": 194.9454,
+        "dif": 0.474244,
+        "dea": -0.039363,
+        "vol_ratio": 1.2062,
+        "hi20": 228.74,
+        "drawdown_from_high": -6.4265,
+        "week_incomplete": false
+      },
+      "code": "603893",
+      "name": "瑞芯微",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 800366624.96,
+        "eps": 2.04,
+        "bps": 11.6396,
+        "roe": 18.34,
+        "gross_margin": 45.791,
+        "net_margin": 29.8634,
+        "debt_ratio": 25.2736,
+        "op_margin": 32.7723,
+        "pe": 52.46,
+        "eps_annualized": 4.08,
+        "pb": 18.39,
+        "text": "（20260630）ROE 18.34%，毛利率 45.791%，净利率 29.8634%，资产负债率 25.2736%，PE 52.46，PB 18.39"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 1335.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 1296.69,
+            "周变化": "+0.22%",
+            "周收盘": 1335.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-1.01%",
+            "MA21": 1280.31,
+            "距MA21": "+4.27%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "距高点仅 -1.0%，没回踩到位，现价追高"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 12.6128,
+            "DIF/价": "+0.94%",
+            "DEA": 5.1383
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF +0.94%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 12.6128,
+            "DEA": 5.1383,
+            "柱": 14.949,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 1335.0,
+            "MA5": 1324.01,
+            "涨跌幅": "+1.25%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +1.25% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.53,
+            "档位": "温和放量",
+            "今日量(万股)": 576.9
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.53（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+4.27%",
+            "MA21": 1280.31,
+            "距20日高点": "-1.01%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +4.3%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 4,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "summary": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 1335.0,
+        "chg_pct": 1.2522,
+        "ma5": 1324.006,
+        "ma21": 1280.3081,
+        "ma13w": 1296.6877,
+        "dif": 12.612812,
+        "dea": 5.13831,
+        "vol_ratio": 1.5312,
+        "hi20": 1348.6,
+        "drawdown_from_high": -1.0085,
+        "week_incomplete": false
+      },
+      "code": "600519",
+      "name": "贵州茅台",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 70690750119.06,
+        "eps": 35.57,
+        "bps": 200.9898,
+        "roe": 16.75,
+        "gross_margin": 89.5552,
+        "net_margin": 50.7516,
+        "debt_ratio": 15.1931,
+        "op_margin": 66.5503,
+        "pe": 18.77,
+        "eps_annualized": 71.14,
+        "pb": 6.64,
+        "text": "（20260630）ROE 16.75%，毛利率 89.5552%，净利率 50.7516%，资产负债率 15.1931%，PE 18.77，PB 6.64"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 50.42,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 52.98,
+            "周变化": "-1.44%",
+            "周收盘": 50.42
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.44%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-9.43%",
+            "MA21": 49.12,
+            "距MA21": "+2.64%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 9.4% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -1.7368,
+            "DIF/价": "-3.44%",
+            "DEA": -2.1718
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.4%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -1.7368,
+            "DEA": -2.1718,
+            "柱": 0.8698,
+            "状态": "2 日前金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 2 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 50.42,
+            "MA5": 47.8,
+            "涨跌幅": "+7.25%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +7.25% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.61,
+            "档位": "温和放量",
+            "今日量(万股)": 13219.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.61（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+2.64%",
+            "MA21": 49.12,
+            "距20日高点": "-9.43%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +2.6%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 4,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "summary": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 50.42,
+        "chg_pct": 7.2538,
+        "ma5": 47.798,
+        "ma21": 49.1224,
+        "ma13w": 52.9808,
+        "dif": -1.736843,
+        "dea": -2.171763,
+        "vol_ratio": 1.6052,
+        "hi20": 55.67,
+        "drawdown_from_high": -9.4306,
+        "week_incomplete": false
+      },
+      "code": "002475",
+      "name": "立讯精密",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -2445863006.32,
+        "eps": 1.0774,
+        "bps": 12.7244,
+        "roe": 8.76,
+        "gross_margin": 11.7785,
+        "net_margin": 4.8857,
+        "debt_ratio": 67.4395,
+        "op_margin": 5.4391,
+        "pe": 23.4,
+        "eps_annualized": 2.155,
+        "pb": 3.96,
+        "text": "（20260630）ROE 8.76%，毛利率 11.7785%，净利率 4.8857%，资产负债率 67.4395%，PE 23.4，PB 3.96"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 41.77,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 40.49,
+            "周变化": "+0.49%",
+            "周收盘": 41.77
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-3.22%",
+            "MA21": 41.65,
+            "距MA21": "+0.29%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 3.2% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 0.4653,
+            "DIF/价": "+1.11%",
+            "DEA": 0.5444
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF +1.11%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.4653,
+            "DEA": 0.5444,
+            "柱": -0.1582,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 41.77,
+            "MA5": 42.29,
+            "涨跌幅": "-0.12%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=42.29），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.51,
+            "档位": "温和放量",
+            "今日量(万股)": 12321.7
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.51（温和放量），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+0.29%",
+            "MA21": 41.65,
+            "距20日高点": "-3.22%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +0.3%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 4,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 MACD 金叉、成交量放大，等信号齐",
+      "summary": "观察：缺 MACD 金叉、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 41.77,
+        "chg_pct": -0.1196,
+        "ma5": 42.288,
+        "ma21": 41.6505,
+        "ma13w": 40.4885,
+        "dif": 0.465309,
+        "dea": 0.544386,
+        "vol_ratio": 1.5132,
+        "hi20": 43.16,
+        "drawdown_from_high": -3.2206,
+        "week_incomplete": false
+      },
+      "code": "600036",
+      "name": "招商银行",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 304611000000.0,
+        "eps": 2.98,
+        "bps": 45.4022,
+        "roe": 6.71,
+        "gross_margin": 50.9499,
+        "net_margin": 43.169,
+        "debt_ratio": 90.183,
+        "op_margin": 50.9499,
+        "pe": 7.01,
+        "eps_annualized": 5.96,
+        "pb": 0.92,
+        "text": "（20260630）ROE 6.71%，毛利率 50.9499%，净利率 43.169%，资产负债率 90.183%，PE 7.01，PB 0.92"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 29.6,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 24.66,
+            "周变化": "+1.64%",
+            "周收盘": 29.6
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-2.95%",
+            "MA21": 23.02,
+            "距MA21": "+28.56%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "距高点仅 -3.0%，没回踩到位，现价追高"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 0.382,
+            "DIF/价": "+1.29%",
+            "DEA": -0.5493
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF +1.29%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.382,
+            "DEA": -0.5493,
+            "柱": 1.8625,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 29.6,
+            "MA5": 25.4,
+            "涨跌幅": "+14.82%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +14.82% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 2.13,
+            "档位": "温和放量",
+            "今日量(万股)": 16994.4
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 2.13（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+28.56%",
+            "MA21": 23.02,
+            "距20日高点": "-2.95%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +28.6%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 4,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "summary": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 29.6,
+        "chg_pct": 14.8177,
+        "ma5": 25.404,
+        "ma21": 23.0248,
+        "ma13w": 24.6592,
+        "dif": 0.381951,
+        "dea": -0.549299,
+        "vol_ratio": 2.127,
+        "hi20": 30.5,
+        "drawdown_from_high": -2.9508,
+        "week_incomplete": false
+      },
+      "code": "300115",
+      "name": "长盈精密",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -202722012.4,
+        "eps": 0.01,
+        "bps": 6.108,
+        "roe": 0.21,
+        "gross_margin": 16.8776,
+        "net_margin": 0.2681,
+        "debt_ratio": 67.8883,
+        "op_margin": 0.0986,
+        "pe": 1480.0,
+        "eps_annualized": 0.02,
+        "pb": 4.85,
+        "text": "（20260630）ROE 0.21%，毛利率 16.8776%，净利率 0.2681%，资产负债率 67.8883%，PE 1480.0，PB 4.85"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 390.3,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 390.31,
+            "周变化": "-1.84%",
+            "周收盘": 390.3
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.84%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-8.59%",
+            "MA21": 345.95,
+            "距MA21": "+12.82%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 8.6% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -15.4644,
+            "DIF/价": "-3.96%",
+            "DEA": -24.9521
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -4.0%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -15.4644,
+            "DEA": -24.9521,
+            "柱": 18.9752,
+            "状态": "2 日前金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 2 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 390.3,
+            "MA5": 346.56,
+            "涨跌幅": "+9.63%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +9.63% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.24,
+            "档位": "正常",
+            "今日量(万股)": 1083.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.24（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+12.82%",
+            "MA21": 345.95,
+            "距20日高点": "-8.59%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +12.8%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 4,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "summary": "观察：缺 周线趋势(MA13周)、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 390.3,
+        "chg_pct": 9.6348,
+        "ma5": 346.56,
+        "ma21": 345.9538,
+        "ma13w": 390.3115,
+        "dif": -15.464445,
+        "dea": -24.952059,
+        "vol_ratio": 1.2393,
+        "hi20": 426.99,
+        "drawdown_from_high": -8.5927,
+        "week_incomplete": false
+      },
+      "code": "301666",
+      "name": "大普微",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -870869962.73,
+        "eps": 3.28,
+        "bps": 8.3589,
+        "roe": 77.43,
+        "gross_margin": 34.9035,
+        "net_margin": 28.2436,
+        "debt_ratio": 51.6821,
+        "op_margin": 28.376,
+        "pe": 59.5,
+        "eps_annualized": 6.56,
+        "pb": 46.69,
+        "text": "（20260630）ROE 77.43%，毛利率 34.9035%，净利率 28.2436%，资产负债率 51.6821%，PE 59.5，PB 46.69"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 201.65,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 186.33,
+            "周变化": "+3.29%",
+            "周收盘": 201.65
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-16.95%",
+            "MA21": 207.2,
+            "距MA21": "-2.68%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-2.7%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -1.6447,
+            "DIF/价": "-0.82%",
+            "DEA": 0.6755
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF -0.82%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -1.6447,
+            "DEA": 0.6755,
+            "柱": -4.6404,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 201.65,
+            "MA5": 194.68,
+            "涨跌幅": "+6.19%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +6.19% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 2.48,
+            "档位": "温和放量",
+            "今日量(万股)": 3392.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 2.48（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-2.68%",
+            "MA21": 207.2,
+            "距20日高点": "-16.95%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -2.7%，按纪律离场"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 3,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "等待",
+      "verdict_reason": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "summary": "观察：缺 日线回踩、MACD 金叉、成交量放大，等信号齐",
+      "provider": "sina",
+      "raw": {
+        "close": 201.65,
+        "chg_pct": 6.1875,
+        "ma5": 194.678,
+        "ma21": 207.1971,
+        "ma13w": 186.3277,
+        "dif": -1.644707,
+        "dea": 0.675507,
+        "vol_ratio": 2.4819,
+        "hi20": 242.8,
+        "drawdown_from_high": -16.9481,
+        "week_incomplete": false
+      },
+      "code": "603186",
+      "name": "华正新材",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 558821455.28,
+        "eps": 5.21,
+        "bps": 19.7106,
+        "roe": 31.09,
+        "gross_margin": 25.4387,
+        "net_margin": 14.3136,
+        "debt_ratio": 63.9665,
+        "op_margin": 16.4103,
+        "pe": 29.03,
+        "eps_annualized": 6.947,
+        "pb": 10.23,
+        "text": "（20260930）ROE 31.09%，毛利率 25.4387%，净利率 14.3136%，资产负债率 63.9665%，PE 29.03，PB 10.23"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 18.55,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 18.8,
+            "周变化": "-0.35%",
+            "周收盘": 18.55
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.35%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-2.06%",
+            "MA21": 18.1,
+            "距MA21": "+2.49%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "距高点仅 -2.1%，没回踩到位，现价追高"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -0.1692,
+            "DIF/价": "-0.91%",
+            "DEA": -0.2443
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF -0.91%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.1692,
+            "DEA": -0.2443,
+            "柱": 0.1502,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 18.55,
+            "MA5": 18.05,
+            "涨跌幅": "+4.33%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +4.33% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 2.48,
+            "档位": "温和放量",
+            "今日量(万股)": 38163.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 2.48（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+2.49%",
+            "MA21": 18.1,
+            "距20日高点": "-2.06%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +2.5%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 18.55,
+        "chg_pct": 4.3307,
+        "ma5": 18.054,
+        "ma21": 18.0995,
+        "ma13w": 18.8046,
+        "dif": -0.169181,
+        "dea": -0.244277,
+        "vol_ratio": 2.4784,
+        "hi20": 18.94,
+        "drawdown_from_high": -2.0591,
+        "week_incomplete": false
+      },
+      "code": "300059",
+      "name": "东方财富",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 22204870921.74,
+        "eps": 0.753,
+        "bps": 6.4718,
+        "roe": 12.28,
+        "gross_margin": 85.9979,
+        "net_margin": 348.5809,
+        "debt_ratio": 78.3263,
+        "op_margin": 90.0588,
+        "pe": 18.48,
+        "eps_annualized": 1.004,
+        "pb": 2.87,
+        "text": "（20260930）ROE 12.28%，毛利率 85.9979%，净利率 348.5809%，资产负债率 78.3263%，PE 18.48，PB 2.87"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 8.32,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 7.91,
+            "周变化": "+0.70%",
+            "周收盘": 8.32
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-3.82%",
+            "MA21": 8.19,
+            "距MA21": "+1.54%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 3.8% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.1509,
+            "DIF/价": "+1.81%",
+            "DEA": 0.14
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 高于零轴 1.8%，已走出一段，不是起涨点"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.1509,
+            "DEA": 0.14,
+            "柱": 0.0218,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 8.32,
+            "MA5": 8.45,
+            "涨跌幅": "-3.14%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=8.45），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.92,
+            "档位": "温和放量",
+            "今日量(万股)": 69033.3
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.92（温和放量），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+1.54%",
+            "MA21": 8.19,
+            "距20日高点": "-3.82%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +1.5%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 8.32,
+        "chg_pct": -3.1432,
+        "ma5": 8.448,
+        "ma21": 8.1938,
+        "ma13w": 7.9054,
+        "dif": 0.150908,
+        "dea": 0.140012,
+        "vol_ratio": 1.9198,
+        "hi20": 8.65,
+        "drawdown_from_high": -3.815,
+        "week_incomplete": false
+      },
+      "code": "601398",
+      "name": "工商银行",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1369013000000.0,
+        "eps": 0.47,
+        "bps": 11.1174,
+        "roe": 4.315,
+        "gross_margin": 44.9827,
+        "net_margin": 37.8816,
+        "debt_ratio": 92.3676,
+        "op_margin": 44.9827,
+        "pe": 8.85,
+        "eps_annualized": 0.94,
+        "pb": 0.75,
+        "text": "（20260630）ROE 4.315%，毛利率 44.9827%，净利率 37.8816%，资产负债率 92.3676%，PE 8.85，PB 0.75"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 213.85,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 216.15,
+            "周变化": "-0.02%",
+            "周收盘": 213.85
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.02%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-0.07%",
+            "MA21": 201.46,
+            "距MA21": "+6.15%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "距高点仅 -0.1%，没回踩到位，现价追高"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.3576,
+            "DIF/价": "-1.57%",
+            "DEA": -4.6442
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -1.6%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.3576,
+            "DEA": -4.6442,
+            "柱": 2.5731,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 213.85,
+            "MA5": 199.77,
+            "涨跌幅": "+12.39%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +12.39% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "量比": 3.35,
+            "档位": "明显放量",
+            "今日量(万股)": 2688.7
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 3.35（明显放量），资金进场"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+6.15%",
+            "MA21": 201.46,
+            "距20日高点": "-0.07%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +6.2%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 213.85,
+        "chg_pct": 12.3929,
+        "ma5": 199.774,
+        "ma21": 201.4567,
+        "ma13w": 216.1515,
+        "dif": -3.357599,
+        "dea": -4.644155,
+        "vol_ratio": 3.3537,
+        "hi20": 214.0,
+        "drawdown_from_high": -0.0701,
+        "week_incomplete": false
+      },
+      "code": "300033",
+      "name": "同花顺",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 3175196590.05,
+        "eps": 2.7062,
+        "bps": 11.4214,
+        "roe": 22.77,
+        "gross_margin": 92.0417,
+        "net_margin": 42.4888,
+        "debt_ratio": 43.0446,
+        "op_margin": 48.103,
+        "pe": 59.27,
+        "eps_annualized": 3.608,
+        "pb": 18.72,
+        "text": "（20260930）ROE 22.77%，毛利率 92.0417%，净利率 42.4888%，资产负债率 43.0446%，PE 59.27，PB 18.72"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 29.45,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 28.52,
+            "周变化": "+0.15%",
+            "周收盘": 29.45
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-1.80%",
+            "MA21": 28.94,
+            "距MA21": "+1.77%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "距高点仅 -1.8%，没回踩到位，现价追高"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": 0.3602,
+            "DIF/价": "+1.22%",
+            "DEA": 0.3112
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF +1.22%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.3602,
+            "DEA": 0.3112,
+            "柱": 0.0981,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 29.45,
+            "MA5": 29.61,
+            "涨跌幅": "-1.24%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=29.61），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.58,
+            "档位": "温和放量",
+            "今日量(万股)": 17991.5
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.58（温和放量），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+1.77%",
+            "MA21": 28.94,
+            "距20日高点": "-1.80%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +1.8%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 29.45,
+        "chg_pct": -1.2408,
+        "ma5": 29.614,
+        "ma21": 28.9371,
+        "ma13w": 28.5238,
+        "dif": 0.360224,
+        "dea": 0.311161,
+        "vol_ratio": 1.5814,
+        "hi20": 29.99,
+        "drawdown_from_high": -1.8006,
+        "week_incomplete": false
+      },
+      "code": "600900",
+      "name": "长江电力",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 24128313774.37,
+        "eps": 0.6031,
+        "bps": 8.8331,
+        "roe": 6.55,
+        "gross_margin": 57.8923,
+        "net_margin": 39.6357,
+        "debt_ratio": 59.3635,
+        "op_margin": 48.4015,
+        "pe": 24.42,
+        "eps_annualized": 1.206,
+        "pb": 3.33,
+        "text": "（20260630）ROE 6.55%，毛利率 57.8923%，净利率 39.6357%，资产负债率 59.3635%，PE 24.42，PB 3.33"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 7.19,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "MA13周": 6.77,
+            "周变化": "+0.74%",
+            "周收盘": 7.19
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "中期趋势向上，纳入观察池"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距20日高点": "-3.23%",
+            "MA21": 6.98,
+            "距MA21": "+2.97%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已从高点回撤 3.2% 且站在 MA21 上方，等金叉确认"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.1507,
+            "DIF/价": "+2.10%",
+            "DEA": 0.1244
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 高于零轴 2.1%，已走出一段，不是起涨点"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": 0.1507,
+            "DEA": 0.1244,
+            "柱": 0.0527,
+            "状态": "多头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "已过金叉窗口，属追高区，等下一次回踩金叉"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 7.19,
+            "MA5": 7.3,
+            "涨跌幅": "-2.84%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=7.30），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.48,
+            "档位": "正常",
+            "今日量(万股)": 59042.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.48（正常），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "距MA21": "+2.97%",
+            "MA21": 6.98,
+            "距20日高点": "-3.23%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "站在 MA21 上方 +3.0%，可继续持有；浮盈>15% 且高点回撤>10% 止盈"
+        }
+      ],
+      "green_count": 3,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 7.19,
+        "chg_pct": -2.8378,
+        "ma5": 7.304,
+        "ma21": 6.9824,
+        "ma13w": 6.7669,
+        "dif": 0.150697,
+        "dea": 0.124359,
+        "vol_ratio": 1.4848,
+        "hi20": 7.43,
+        "drawdown_from_high": -3.2301,
+        "week_incomplete": false
+      },
+      "code": "601288",
+      "name": "农业银行",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 287612000000.0,
+        "eps": 0.4,
+        "bps": 8.1662,
+        "roe": 5.07,
+        "gross_margin": 44.45,
+        "net_margin": 36.0361,
+        "debt_ratio": 93.4686,
+        "op_margin": 44.45,
+        "pe": 8.99,
+        "eps_annualized": 0.8,
+        "pb": 0.88,
+        "text": "（20260630）ROE 5.07%，毛利率 44.45%，净利率 36.0361%，资产负债率 93.4686%，PE 8.99，PB 0.88"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 52.32,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 59.32,
+            "周变化": "-0.01%",
+            "周收盘": 52.32
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.01%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-31.47%",
+            "MA21": 56.9,
+            "距MA21": "-8.05%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-8.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.6492,
+            "DIF/价": "-6.97%",
+            "DEA": -3.685
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.0%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -3.6492,
+            "DEA": -3.685,
+            "柱": 0.0717,
+            "状态": "今日金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 0 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 52.32,
+            "MA5": 51.5,
+            "涨跌幅": "+1.75%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +1.75% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.06,
+            "档位": "正常",
+            "今日量(万股)": 17251.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.06（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-8.05%",
+            "MA21": 56.9,
+            "距20日高点": "-31.47%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -8.0%，按纪律离场"
+        }
+      ],
+      "green_count": 2,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 52.32,
+        "chg_pct": 1.7503,
+        "ma5": 51.502,
+        "ma21": 56.8986,
+        "ma13w": 59.3177,
+        "dif": -3.649194,
+        "dea": -3.685025,
+        "vol_ratio": 1.0552,
+        "hi20": 76.35,
+        "drawdown_from_high": -31.4735,
+        "week_incomplete": false
+      },
+      "code": "600487",
+      "name": "亨通光电",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -864794244.74,
+        "eps": 1.29,
+        "bps": 13.6667,
+        "roe": 9.43,
+        "gross_margin": 16.7677,
+        "net_margin": 7.769,
+        "debt_ratio": 52.3852,
+        "op_margin": 8.5258,
+        "pe": 20.28,
+        "eps_annualized": 2.58,
+        "pb": 3.83,
+        "text": "（20260630）ROE 9.43%，毛利率 16.7677%，净利率 7.769%，资产负债率 52.3852%，PE 20.28，PB 3.83"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 251.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 272.36,
+            "周变化": "-0.93%",
+            "周收盘": 251.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.93%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-16.90%",
+            "MA21": 251.1,
+            "距MA21": "-0.04%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-0.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -15.0499,
+            "DIF/价": "-6.00%",
+            "DEA": -17.6145
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -6.0%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -15.0499,
+            "DEA": -17.6145,
+            "柱": 5.1293,
+            "状态": "1 日前金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 1 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 251.0,
+            "MA5": 233.34,
+            "涨跌幅": "+3.22%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +3.22% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.48,
+            "档位": "正常",
+            "今日量(万股)": 3229.3
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.48（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-0.04%",
+            "MA21": 251.1,
+            "距20日高点": "-16.90%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -0.0%，按纪律离场"
+        }
+      ],
+      "green_count": 2,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 251.0,
+        "chg_pct": 3.22,
+        "ma5": 233.344,
+        "ma21": 251.0957,
+        "ma13w": 272.3577,
+        "dif": -15.049852,
+        "dea": -17.61451,
+        "vol_ratio": 1.4788,
+        "hi20": 302.05,
+        "drawdown_from_high": -16.9012,
+        "week_incomplete": false
+      },
+      "code": "001309",
+      "name": "德明利",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -6735565797.74,
+        "eps": 26.76,
+        "bps": 43.1033,
+        "roe": 95.11,
+        "gross_margin": 47.1244,
+        "net_margin": 35.582,
+        "debt_ratio": 70.342,
+        "op_margin": 41.5603,
+        "pe": 4.69,
+        "eps_annualized": 53.52,
+        "pb": 5.82,
+        "text": "（20260630）ROE 95.11%，毛利率 47.1244%，净利率 35.582%，资产负债率 70.342%，PE 4.69，PB 5.82"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 59.78,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 68.92,
+            "周变化": "-2.51%",
+            "周收盘": 59.78
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.51%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-19.70%",
+            "MA21": 63.29,
+            "距MA21": "-5.55%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-5.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.5117,
+            "DIF/价": "-5.87%",
+            "DEA": -3.5682
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -5.9%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -3.5117,
+            "DEA": -3.5682,
+            "柱": 0.113,
+            "状态": "今日金叉"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "金叉在 0 个交易日内且仍多头排列，入场窗口打开"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 59.78,
+            "MA5": 57.92,
+            "涨跌幅": "+1.32%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +1.32% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.72,
+            "档位": "温和放量",
+            "今日量(万股)": 9793.3
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.72（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-5.55%",
+            "MA21": 63.29,
+            "距20日高点": "-19.70%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -5.6%，按纪律离场"
+        }
+      ],
+      "green_count": 2,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 59.78,
+        "chg_pct": 1.322,
+        "ma5": 57.92,
+        "ma21": 63.2938,
+        "ma13w": 68.9162,
+        "dif": -3.511725,
+        "dea": -3.568247,
+        "vol_ratio": 1.7216,
+        "hi20": 74.45,
+        "drawdown_from_high": -19.7045,
+        "week_incomplete": false
+      },
+      "code": "600584",
+      "name": "长电科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 4299927196.79,
+        "eps": 0.9,
+        "bps": 16.5056,
+        "roe": 5.54,
+        "gross_margin": 16.0081,
+        "net_margin": 5.1351,
+        "debt_ratio": 48.3937,
+        "op_margin": 5.5824,
+        "pe": 49.82,
+        "eps_annualized": 1.2,
+        "pb": 3.62,
+        "text": "（20260930）ROE 5.54%，毛利率 16.0081%，净利率 5.1351%，资产负债率 48.3937%，PE 49.82，PB 3.62"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 51.76,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 53.31,
+            "周变化": "-0.19%",
+            "周收盘": 51.76
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.19%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-5.04%",
+            "MA21": 52.5,
+            "距MA21": "-1.41%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-1.4%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "DIF": -0.6644,
+            "DIF/价": "-1.28%",
+            "DEA": -0.5543
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF -1.28%，贴近零轴，处在变盘窗口"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.6644,
+            "DEA": -0.5543,
+            "柱": -0.2201,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 51.76,
+            "MA5": 51.35,
+            "涨跌幅": "+1.61%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +1.61% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.49,
+            "档位": "正常",
+            "今日量(万股)": 10107.4
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.49（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-1.41%",
+            "MA21": 52.5,
+            "距20日高点": "-5.04%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -1.4%，按纪律离场"
+        }
+      ],
+      "green_count": 2,
+      "total": 7,
+      "entry_green": 2,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 2/6",
+      "summary": "暂不关注：入场仅 2/6",
+      "provider": "sina",
+      "raw": {
+        "close": 51.76,
+        "chg_pct": 1.6097,
+        "ma5": 51.354,
+        "ma21": 52.5029,
+        "ma13w": 53.3062,
+        "dif": -0.664394,
+        "dea": -0.554343,
+        "vol_ratio": 1.4885,
+        "hi20": 54.51,
+        "drawdown_from_high": -5.0449,
+        "week_incomplete": false
+      },
+      "code": "601318",
+      "name": "中国平安",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 368037000000.0,
+        "eps": 5.3,
+        "bps": 56.7751,
+        "roe": 9.0,
+        "gross_margin": 22.7472,
+        "net_margin": 18.6934,
+        "debt_ratio": 89.8323,
+        "op_margin": 22.7472,
+        "pe": 4.88,
+        "eps_annualized": 10.6,
+        "pb": 0.91,
+        "text": "（20260630）ROE 9.0%，毛利率 22.7472%，净利率 18.6934%，资产负债率 89.8323%，PE 4.88，PB 0.91"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 292.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 368.34,
+            "周变化": "-3.33%",
+            "周收盘": 292.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -3.33%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-29.37%",
+            "MA21": 331.74,
+            "距MA21": "-11.98%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-12.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -28.5056,
+            "DIF/价": "-9.76%",
+            "DEA": -26.4663
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -9.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -28.5056,
+            "DEA": -26.4663,
+            "柱": -4.0786,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 292.0,
+            "MA5": 284.33,
+            "涨跌幅": "+5.51%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +5.51% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.51,
+            "档位": "温和放量",
+            "今日量(万股)": 4598.7
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.51（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-11.98%",
+            "MA21": 331.74,
+            "距20日高点": "-29.37%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -12.0%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 292.0,
+        "chg_pct": 5.5104,
+        "ma5": 284.328,
+        "ma21": 331.74,
+        "ma13w": 368.3369,
+        "dif": -28.505633,
+        "dea": -26.46633,
+        "vol_ratio": 1.5087,
+        "hi20": 413.43,
+        "drawdown_from_high": -29.3714,
+        "week_incomplete": false
+      },
+      "code": "603986",
+      "name": "兆易创新",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 6048341057.06,
+        "eps": 9.83,
+        "bps": 53.1292,
+        "roe": 23.13,
+        "gross_margin": 63.1305,
+        "net_margin": 59.5292,
+        "debt_ratio": 11.4652,
+        "op_margin": 66.7014,
+        "pe": 14.85,
+        "eps_annualized": 19.66,
+        "pb": 5.5,
+        "text": "（20260630）ROE 23.13%，毛利率 63.1305%，净利率 59.5292%，资产负债率 11.4652%，PE 14.85，PB 5.5"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 932.2,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 1049.18,
+            "周变化": "-2.10%",
+            "周收盘": 932.2
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.10%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-19.28%",
+            "MA21": 998.15,
+            "距MA21": "-6.61%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-6.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -46.6038,
+            "DIF/价": "-5.00%",
+            "DEA": -41.632
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -5.0%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -46.6038,
+            "DEA": -41.632,
+            "柱": -9.9435,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 932.2,
+            "MA5": 916.41,
+            "涨跌幅": "+5.46%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +5.46% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.75,
+            "档位": "温和放量",
+            "今日量(万股)": 1426.4
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.75（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-6.61%",
+            "MA21": 998.15,
+            "距20日高点": "-19.28%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -6.6%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 932.2,
+        "chg_pct": 5.4596,
+        "ma5": 916.414,
+        "ma21": 998.1462,
+        "ma13w": 1049.1831,
+        "dif": -46.603762,
+        "dea": -41.632015,
+        "vol_ratio": 1.7483,
+        "hi20": 1154.79,
+        "drawdown_from_high": -19.2754,
+        "week_incomplete": false
+      },
+      "code": "688256",
+      "name": "寒武纪",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 227636767.5,
+        "eps": 5.91,
+        "bps": 24.0496,
+        "roe": 27.73,
+        "gross_margin": 56.527,
+        "net_margin": 38.9895,
+        "debt_ratio": 32.3575,
+        "op_margin": 38.9243,
+        "pe": 118.3,
+        "eps_annualized": 7.88,
+        "pb": 38.76,
+        "text": "（20260930）ROE 27.73%，毛利率 56.527%，净利率 38.9895%，资产负债率 32.3575%，PE 118.3，PB 38.76"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 180.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 199.15,
+            "周变化": "-2.00%",
+            "周收盘": 180.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.00%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-22.72%",
+            "MA21": 191.96,
+            "距MA21": "-6.23%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-6.2%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -8.1334,
+            "DIF/价": "-4.52%",
+            "DEA": -7.0062
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -4.5%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -8.1334,
+            "DEA": -7.0062,
+            "柱": -2.2544,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 180.0,
+            "MA5": 173.48,
+            "涨跌幅": "+2.78%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +2.78% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.49,
+            "档位": "正常",
+            "今日量(万股)": 4450.5
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.49（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-6.23%",
+            "MA21": 191.96,
+            "距20日高点": "-22.72%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -6.2%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 180.0,
+        "chg_pct": 2.7808,
+        "ma5": 173.482,
+        "ma21": 191.9633,
+        "ma13w": 199.1492,
+        "dif": -8.133429,
+        "dea": -7.006226,
+        "vol_ratio": 1.4937,
+        "hi20": 232.92,
+        "drawdown_from_high": -22.7202,
+        "week_incomplete": false
+      },
+      "code": "688008",
+      "name": "XD澜起科",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1328028043.56,
+        "eps": 1.69,
+        "bps": 17.6045,
+        "roe": 10.72,
+        "gross_margin": 65.3127,
+        "net_margin": 58.1952,
+        "debt_ratio": 7.5088,
+        "op_margin": 62.0842,
+        "pe": 53.25,
+        "eps_annualized": 3.38,
+        "pb": 10.22,
+        "text": "（20260630）ROE 10.72%，毛利率 65.3127%，净利率 58.1952%，资产负债率 7.5088%，PE 53.25，PB 10.22"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 183.48,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 224.77,
+            "周变化": "-1.57%",
+            "周收盘": 183.48
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.57%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-27.19%",
+            "MA21": 206.5,
+            "距MA21": "-11.15%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-11.1%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.3058,
+            "DIF/价": "-7.80%",
+            "DEA": -13.0138
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.3058,
+            "DEA": -13.0138,
+            "柱": -2.584,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 183.48,
+            "MA5": 182.18,
+            "涨跌幅": "+3.08%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +3.08% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.36,
+            "档位": "正常",
+            "今日量(万股)": 3256.9
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.36（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-11.15%",
+            "MA21": 206.5,
+            "距20日高点": "-27.19%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -11.1%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 183.48,
+        "chg_pct": 3.0844,
+        "ma5": 182.178,
+        "ma21": 206.4976,
+        "ma13w": 224.7669,
+        "dif": -14.305831,
+        "dea": -13.013839,
+        "vol_ratio": 1.3581,
+        "hi20": 252.0,
+        "drawdown_from_high": -27.1905,
+        "week_incomplete": false
+      },
+      "code": "300476",
+      "name": "胜宏科技",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 2911175283.0,
+        "eps": 3.14,
+        "bps": 38.5733,
+        "roe": 11.8,
+        "gross_margin": 33.2213,
+        "net_margin": 24.5652,
+        "debt_ratio": 39.8545,
+        "op_margin": 28.7826,
+        "pe": 29.22,
+        "eps_annualized": 6.28,
+        "pb": 4.76,
+        "text": "（20260630）ROE 11.8%，毛利率 33.2213%，净利率 24.5652%，资产负债率 39.8545%，PE 29.22，PB 4.76"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 201.1,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 242.29,
+            "周变化": "-3.47%",
+            "周收盘": 201.1
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -3.47%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-25.45%",
+            "MA21": 219.0,
+            "距MA21": "-8.17%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-8.2%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.4114,
+            "DIF/价": "-7.17%",
+            "DEA": -13.4534
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.2%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.4114,
+            "DEA": -13.4534,
+            "柱": -1.916,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 201.1,
+            "MA5": 193.78,
+            "涨跌幅": "+5.28%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +5.28% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.48,
+            "档位": "正常",
+            "今日量(万股)": 2781.9
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.48（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-8.17%",
+            "MA21": 219.0,
+            "距20日高点": "-25.45%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -8.2%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 201.1,
+        "chg_pct": 5.2769,
+        "ma5": 193.784,
+        "ma21": 219.0033,
+        "ma13w": 242.2854,
+        "dif": -14.411353,
+        "dea": -13.453374,
+        "vol_ratio": 1.479,
+        "hi20": 269.74,
+        "drawdown_from_high": -25.4467,
+        "week_incomplete": false
+      },
+      "code": "688041",
+      "name": "海光信息",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": -2442780168.86,
+        "eps": 1.23,
+        "bps": 11.3681,
+        "roe": 11.59,
+        "gross_margin": 56.5893,
+        "net_margin": 23.2352,
+        "debt_ratio": 24.9733,
+        "op_margin": 24.1418,
+        "pe": 122.62,
+        "eps_annualized": 1.64,
+        "pb": 17.69,
+        "text": "（20260930）ROE 11.59%，毛利率 56.5893%，净利率 23.2352%，资产负债率 24.9733%，PE 122.62，PB 17.69"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 84.68,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 89.84,
+            "周变化": "+0.57%",
+            "周收盘": 84.68
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 +0.57%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-13.47%",
+            "MA21": 86.09,
+            "距MA21": "-1.64%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-1.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -2.9303,
+            "DIF/价": "-3.46%",
+            "DEA": -2.9286
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.5%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -2.9303,
+            "DEA": -2.9286,
+            "柱": -0.0036,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 84.68,
+            "MA5": 80.88,
+            "涨跌幅": "+5.82%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +5.82% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.53,
+            "档位": "温和放量",
+            "今日量(万股)": 6477.3
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.53（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-1.64%",
+            "MA21": 86.09,
+            "距20日高点": "-13.47%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -1.6%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 84.68,
+        "chg_pct": 5.8235,
+        "ma5": 80.878,
+        "ma21": 86.0929,
+        "ma13w": 89.8385,
+        "dif": -2.93034,
+        "dea": -2.92856,
+        "vol_ratio": 1.5282,
+        "hi20": 97.86,
+        "drawdown_from_high": -13.4682,
+        "week_incomplete": false
+      },
+      "code": "002428",
+      "name": "云南锗业",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 183725531.08,
+        "eps": 0.269,
+        "bps": 2.4962,
+        "roe": 11.38,
+        "gross_margin": 29.9893,
+        "net_margin": 13.5978,
+        "debt_ratio": 62.3929,
+        "op_margin": 15.3801,
+        "pe": 236.1,
+        "eps_annualized": 0.359,
+        "pb": 33.92,
+        "text": "（20260930）ROE 11.38%，毛利率 29.9893%，净利率 13.5978%，资产负债率 62.3929%，PE 236.1，PB 33.92"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 104.1,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 118.75,
+            "周变化": "-2.50%",
+            "周收盘": 104.1
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.50%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-17.12%",
+            "MA21": 110.31,
+            "距MA21": "-5.63%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-5.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -5.5363,
+            "DIF/价": "-5.32%",
+            "DEA": -5.302
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -5.3%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -5.5363,
+            "DEA": -5.302,
+            "柱": -0.4686,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 104.1,
+            "MA5": 101.22,
+            "涨跌幅": "+4.01%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +4.01% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.65,
+            "档位": "温和放量",
+            "今日量(万股)": 5249.1
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.65（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-5.63%",
+            "MA21": 110.31,
+            "距20日高点": "-17.12%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -5.6%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 104.1,
+        "chg_pct": 4.0064,
+        "ma5": 101.222,
+        "ma21": 110.3052,
+        "ma13w": 118.7492,
+        "dif": -5.536296,
+        "dea": -5.301977,
+        "vol_ratio": 1.6477,
+        "hi20": 125.61,
+        "drawdown_from_high": -17.1244,
+        "week_incomplete": false
+      },
+      "code": "688981",
+      "name": "中芯国际",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 20759511000.0,
+        "eps": 0.56,
+        "bps": 20.0281,
+        "roe": 2.9,
+        "gross_margin": 23.1558,
+        "net_margin": 16.6654,
+        "debt_ratio": 33.8157,
+        "op_margin": 18.4234,
+        "pe": 92.95,
+        "eps_annualized": 1.12,
+        "pb": 5.2,
+        "text": "（20260630）ROE 2.9%，毛利率 23.1558%，净利率 16.6654%，资产负债率 33.8157%，PE 92.95，PB 5.2"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 48.85,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 59.97,
+            "周变化": "-1.36%",
+            "周收盘": 48.85
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.36%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-24.78%",
+            "MA21": 54.9,
+            "距MA21": "-11.02%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-11.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.793,
+            "DIF/价": "-7.76%",
+            "DEA": -3.3957
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.793,
+            "DEA": -3.3957,
+            "柱": -0.7945,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 48.85,
+            "MA5": 48.59,
+            "涨跌幅": "+1.96%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +1.96% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.26,
+            "档位": "正常",
+            "今日量(万股)": 10582.1
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.26（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-11.02%",
+            "MA21": 54.9,
+            "距20日高点": "-24.78%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -11.0%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 48.85,
+        "chg_pct": 1.962,
+        "ma5": 48.588,
+        "ma21": 54.901,
+        "ma13w": 59.9746,
+        "dif": -3.792956,
+        "dea": -3.395729,
+        "vol_ratio": 1.2581,
+        "hi20": 64.94,
+        "drawdown_from_high": -24.7767,
+        "week_incomplete": false
+      },
+      "code": "601138",
+      "name": "工业富联",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 7391463000.0,
+        "eps": 1.2,
+        "bps": 8.8567,
+        "roe": 13.36,
+        "gross_margin": 7.1507,
+        "net_margin": 4.2572,
+        "debt_ratio": 65.6562,
+        "op_margin": 4.9847,
+        "pe": 20.35,
+        "eps_annualized": 2.4,
+        "pb": 5.52,
+        "text": "（20260630）ROE 13.36%，毛利率 7.1507%，净利率 4.2572%，资产负债率 65.6562%，PE 20.35，PB 5.52"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 93.99,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 115.51,
+            "周变化": "-0.45%",
+            "周收盘": 93.99
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.45%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-32.62%",
+            "MA21": 110.49,
+            "距MA21": "-14.94%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-14.9%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -7.2382,
+            "DIF/价": "-7.70%",
+            "DEA": -5.3951
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.7%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -7.2382,
+            "DEA": -5.3951,
+            "柱": -3.6861,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 93.99,
+            "MA5": 93.72,
+            "涨跌幅": "+2.20%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +2.20% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.26,
+            "档位": "正常",
+            "今日量(万股)": 4633.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.26（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-14.94%",
+            "MA21": 110.49,
+            "距20日高点": "-32.62%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -14.9%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 93.99,
+        "chg_pct": 2.1964,
+        "ma5": 93.72,
+        "ma21": 110.4938,
+        "ma13w": 115.5108,
+        "dif": -7.238206,
+        "dea": -5.395144,
+        "vol_ratio": 1.2632,
+        "hi20": 139.5,
+        "drawdown_from_high": -32.6237,
+        "week_incomplete": false
+      },
+      "code": "300408",
+      "name": "三环集团",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1297319594.91,
+        "eps": 1.01,
+        "bps": 11.8155,
+        "roe": 8.61,
+        "gross_margin": 44.3197,
+        "net_margin": 30.0778,
+        "debt_ratio": 20.3583,
+        "op_margin": 34.6669,
+        "pe": 46.53,
+        "eps_annualized": 2.02,
+        "pb": 7.95,
+        "text": "（20260630）ROE 8.61%，毛利率 44.3197%，净利率 30.0778%，资产负债率 20.3583%，PE 46.53，PB 7.95"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 164.97,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 209.65,
+            "周变化": "-2.54%",
+            "周收盘": 164.97
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.54%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-27.82%",
+            "MA21": 184.25,
+            "距MA21": "-10.46%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-10.5%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -16.3931,
+            "DIF/价": "-9.94%",
+            "DEA": -16.3084
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -9.9%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -16.3931,
+            "DEA": -16.3084,
+            "柱": -0.1695,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "green",
+          "passed": true,
+          "value": {
+            "收盘": 164.97,
+            "MA5": 161.2,
+            "涨跌幅": "+3.43%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "收阳 +3.43% 并站上 MA5，短线企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.36,
+            "档位": "正常",
+            "今日量(万股)": 2545.3
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.36（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-10.46%",
+            "MA21": 184.25,
+            "距20日高点": "-27.82%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -10.5%，按纪律离场"
+        }
+      ],
+      "green_count": 1,
+      "total": 7,
+      "entry_green": 1,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 1/6",
+      "summary": "暂不关注：入场仅 1/6",
+      "provider": "sina",
+      "raw": {
+        "close": 164.97,
+        "chg_pct": 3.4295,
+        "ma5": 161.2,
+        "ma21": 184.2471,
+        "ma13w": 209.6515,
+        "dif": -16.393147,
+        "dea": -16.308399,
+        "vol_ratio": 1.3555,
+        "hi20": 228.56,
+        "drawdown_from_high": -27.822,
+        "week_incomplete": false
+      },
+      "code": "688525",
+      "name": "佰维存储",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -6261171962.18,
+        "eps": 15.28,
+        "bps": 26.9321,
+        "roe": 78.69,
+        "gross_margin": 54.8116,
+        "net_margin": 45.8919,
+        "debt_ratio": 61.6377,
+        "op_margin": 53.8563,
+        "pe": 5.4,
+        "eps_annualized": 30.56,
+        "pb": 6.13,
+        "text": "（20260630）ROE 78.69%，毛利率 54.8116%，净利率 45.8919%，资产负债率 61.6377%，PE 5.4，PB 6.13"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 612.63,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 844.61,
+            "周变化": "-3.79%",
+            "周收盘": 612.63
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -3.79%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-37.07%",
+            "MA21": 767.95,
+            "距MA21": "-20.23%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-20.2%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -72.1574,
+            "DIF/价": "-11.78%",
+            "DEA": -58.4779
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -11.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -72.1574,
+            "DEA": -58.4779,
+            "柱": -27.359,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 612.63,
+            "MA5": 631.62,
+            "涨跌幅": "+3.82%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=631.62），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.82,
+            "档位": "温和放量",
+            "今日量(万股)": 4788.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.82（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-20.23%",
+            "MA21": 767.95,
+            "距20日高点": "-37.07%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -20.2%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 612.63,
+        "chg_pct": 3.8162,
+        "ma5": 631.622,
+        "ma21": 767.9538,
+        "ma13w": 844.61,
+        "dif": -72.157375,
+        "dea": -58.477881,
+        "vol_ratio": 1.8196,
+        "hi20": 973.49,
+        "drawdown_from_high": -37.0687,
+        "week_incomplete": false
+      },
+      "code": "300308",
+      "name": "中际旭创",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1799674832.02,
+        "eps": 12.31,
+        "bps": 35.7406,
+        "roe": 37.62,
+        "gross_margin": 46.2522,
+        "net_margin": 35.2661,
+        "debt_ratio": 36.0816,
+        "op_margin": 41.2451,
+        "pe": 24.88,
+        "eps_annualized": 24.62,
+        "pb": 17.14,
+        "text": "（20260630）ROE 37.62%，毛利率 46.2522%，净利率 35.2661%，资产负债率 36.0816%，PE 24.88，PB 17.14"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 237.6,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 331.89,
+            "周变化": "-3.23%",
+            "周收盘": 237.6
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -3.23%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-23.35%",
+            "MA21": 280.57,
+            "距MA21": "-15.32%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-15.3%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -25.3944,
+            "DIF/价": "-10.69%",
+            "DEA": -21.518
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -10.7%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -25.3944,
+            "DEA": -21.518,
+            "柱": -7.7528,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 237.6,
+            "MA5": 242.4,
+            "涨跌幅": "+7.80%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=242.40），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.59,
+            "档位": "温和放量",
+            "今日量(万股)": 11148.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.59（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-15.32%",
+            "MA21": 280.57,
+            "距20日高点": "-23.35%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -15.3%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 237.6,
+        "chg_pct": 7.7991,
+        "ma5": 242.402,
+        "ma21": 280.571,
+        "ma13w": 331.8877,
+        "dif": -25.394367,
+        "dea": -21.517986,
+        "vol_ratio": 1.5925,
+        "hi20": 310.0,
+        "drawdown_from_high": -23.3548,
+        "week_incomplete": false
+      },
+      "code": "300750",
+      "name": "宁德时代",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 61625487000.0,
+        "eps": 14.13,
+        "bps": 83.6093,
+        "roe": 17.64,
+        "gross_margin": 22.7175,
+        "net_margin": 15.7187,
+        "debt_ratio": 64.2304,
+        "op_margin": 18.305,
+        "pe": 12.61,
+        "eps_annualized": 18.84,
+        "pb": 2.84,
+        "text": "（20260930）ROE 17.64%，毛利率 22.7175%，净利率 15.7187%，资产负债率 64.2304%，PE 12.61，PB 2.84"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 261.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 394.01,
+            "周变化": "-4.03%",
+            "周收盘": 261.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -4.03%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-45.05%",
+            "MA21": 364.74,
+            "距MA21": "-28.44%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-28.4%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -38.6399,
+            "DIF/价": "-14.80%",
+            "DEA": -28.2834
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -14.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -38.6399,
+            "DEA": -28.2834,
+            "柱": -20.713,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 261.0,
+            "MA5": 283.86,
+            "涨跌幅": "+1.16%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=283.86），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.95,
+            "档位": "温和放量",
+            "今日量(万股)": 8589.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.95（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-28.44%",
+            "MA21": 364.74,
+            "距20日高点": "-45.05%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -28.4%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 261.0,
+        "chg_pct": 1.1589,
+        "ma5": 283.86,
+        "ma21": 364.7381,
+        "ma13w": 394.0115,
+        "dif": -38.639885,
+        "dea": -28.283389,
+        "vol_ratio": 1.9494,
+        "hi20": 475.0,
+        "drawdown_from_high": -45.0526,
+        "week_incomplete": false
+      },
+      "code": "300502",
+      "name": "新易盛",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1616408524.15,
+        "eps": 5.41,
+        "bps": 17.4263,
+        "roe": 34.86,
+        "gross_margin": 48.4397,
+        "net_margin": 36.1856,
+        "debt_ratio": 33.2378,
+        "op_margin": 41.5213,
+        "pe": 24.12,
+        "eps_annualized": 10.82,
+        "pb": 14.98,
+        "text": "（20260630）ROE 34.86%，毛利率 48.4397%，净利率 36.1856%，资产负债率 33.2378%，PE 24.12，PB 14.98"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 114.22,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 174.9,
+            "周变化": "-3.60%",
+            "周收盘": 114.22
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -3.60%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-45.22%",
+            "MA21": 153.05,
+            "距MA21": "-25.37%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-25.4%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -19.4978,
+            "DIF/价": "-17.07%",
+            "DEA": -16.7699
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -17.1%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -19.4978,
+            "DEA": -16.7699,
+            "柱": -5.4558,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 114.22,
+            "MA5": 119.04,
+            "涨跌幅": "+0.63%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=119.04），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.53,
+            "档位": "温和放量",
+            "今日量(万股)": 7833.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.53（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-25.37%",
+            "MA21": 153.05,
+            "距20日高点": "-45.22%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -25.4%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 114.22,
+        "chg_pct": 0.6255,
+        "ma5": 119.04,
+        "ma21": 153.0467,
+        "ma13w": 174.8962,
+        "dif": -19.497831,
+        "dea": -16.769909,
+        "vol_ratio": 1.5255,
+        "hi20": 208.5,
+        "drawdown_from_high": -45.2182,
+        "week_incomplete": false
+      },
+      "code": "002384",
+      "name": "东山精密",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 2383887276.1,
+        "eps": 1.62,
+        "bps": 13.3035,
+        "roe": 12.88,
+        "gross_margin": 20.1514,
+        "net_margin": 10.737,
+        "debt_ratio": 64.5077,
+        "op_margin": 12.6031,
+        "pe": 35.25,
+        "eps_annualized": 3.24,
+        "pb": 8.59,
+        "text": "（20260630）ROE 12.88%，毛利率 20.1514%，净利率 10.737%，资产负债率 64.5077%，PE 35.25，PB 8.59"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 200.81,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 244.27,
+            "周变化": "-0.07%",
+            "周收盘": 200.81
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.07%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-31.25%",
+            "MA21": 240.69,
+            "距MA21": "-16.57%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-16.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.9264,
+            "DIF/价": "-7.43%",
+            "DEA": -10.2752
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.4%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.9264,
+            "DEA": -10.2752,
+            "柱": -9.3026,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 200.81,
+            "MA5": 204.13,
+            "涨跌幅": "+1.93%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=204.13），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.44,
+            "档位": "正常",
+            "今日量(万股)": 4415.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.44（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-16.57%",
+            "MA21": 240.69,
+            "距20日高点": "-31.25%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -16.6%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 200.81,
+        "chg_pct": 1.934,
+        "ma5": 204.126,
+        "ma21": 240.6862,
+        "ma13w": 244.2715,
+        "dif": -14.926436,
+        "dea": -10.275155,
+        "vol_ratio": 1.4398,
+        "hi20": 292.07,
+        "drawdown_from_high": -31.2459,
+        "week_incomplete": false
+      },
+      "code": "300394",
+      "name": "天孚通信",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1000881668.42,
+        "eps": 1.1057,
+        "bps": 5.7283,
+        "roe": 19.6,
+        "gross_margin": 60.8696,
+        "net_margin": 42.5898,
+        "debt_ratio": 17.5629,
+        "op_margin": 48.8176,
+        "pe": 90.81,
+        "eps_annualized": 2.211,
+        "pb": 35.06,
+        "text": "（20260630）ROE 19.6%，毛利率 60.8696%，净利率 42.5898%，资产负债率 17.5629%，PE 90.81，PB 35.06"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 144.72,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 153.99,
+            "周变化": "+1.02%",
+            "周收盘": 144.72
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 +1.02%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-15.47%",
+            "MA21": 156.76,
+            "距MA21": "-7.68%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-7.7%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.281,
+            "DIF/价": "-2.27%",
+            "DEA": -1.2315
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -2.3%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.281,
+            "DEA": -1.2315,
+            "柱": -4.099,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 144.72,
+            "MA5": 145.51,
+            "涨跌幅": "+2.41%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=145.51），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.1,
+            "档位": "正常",
+            "今日量(万股)": 5524.5
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.10（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-7.68%",
+            "MA21": 156.76,
+            "距20日高点": "-15.47%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -7.7%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 144.72,
+        "chg_pct": 2.4131,
+        "ma5": 145.508,
+        "ma21": 156.7605,
+        "ma13w": 153.9923,
+        "dif": -3.281023,
+        "dea": -1.231522,
+        "vol_ratio": 1.103,
+        "hi20": 171.2,
+        "drawdown_from_high": -15.4673,
+        "week_incomplete": false
+      },
+      "code": "603259",
+      "name": "药明康德",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 9699142388.08,
+        "eps": 3.8,
+        "bps": 27.9291,
+        "roe": 13.19,
+        "gross_margin": 53.9095,
+        "net_margin": 38.5028,
+        "debt_ratio": 27.8495,
+        "op_margin": 46.8218,
+        "pe": 19.04,
+        "eps_annualized": 7.6,
+        "pb": 5.18,
+        "text": "（20260630）ROE 13.19%，毛利率 53.9095%，净利率 38.5028%，资产负债率 27.8495%，PE 19.04，PB 5.18"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 110.81,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 131.84,
+            "周变化": "-0.46%",
+            "周收盘": 110.81
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.46%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-26.12%",
+            "MA21": 127.51,
+            "距MA21": "-13.10%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-13.1%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -7.2968,
+            "DIF/价": "-6.58%",
+            "DEA": -5.8329
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -6.6%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -7.2968,
+            "DEA": -5.8329,
+            "柱": -2.9279,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 110.81,
+            "MA5": 114.98,
+            "涨跌幅": "+0.50%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=114.98），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.32,
+            "档位": "正常",
+            "今日量(万股)": 7145.1
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.32（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-13.10%",
+            "MA21": 127.51,
+            "距20日高点": "-26.12%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -13.1%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 110.81,
+        "chg_pct": 0.4988,
+        "ma5": 114.984,
+        "ma21": 127.5124,
+        "ma13w": 131.8446,
+        "dif": -7.296804,
+        "dea": -5.832867,
+        "vol_ratio": 1.3225,
+        "hi20": 149.99,
+        "drawdown_from_high": -26.1217,
+        "week_incomplete": false
+      },
+      "code": "600183",
+      "name": "生益科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 2983205422.39,
+        "eps": 1.36,
+        "bps": 7.6166,
+        "roe": 18.17,
+        "gross_margin": 30.6923,
+        "net_margin": 19.5412,
+        "debt_ratio": 50.3285,
+        "op_margin": 22.1823,
+        "pe": 40.74,
+        "eps_annualized": 2.72,
+        "pb": 14.55,
+        "text": "（20260630）ROE 18.17%，毛利率 30.6923%，净利率 19.5412%，资产负债率 50.3285%，PE 40.74，PB 14.55"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 28.79,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 31.93,
+            "周变化": "-0.56%",
+            "周收盘": 28.79
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.56%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-9.38%",
+            "MA21": 29.98,
+            "距MA21": "-3.96%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-4.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.8824,
+            "DIF/价": "-3.06%",
+            "DEA": -0.7864
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.1%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.8824,
+            "DEA": -0.7864,
+            "柱": -0.1919,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 28.79,
+            "MA5": 28.87,
+            "涨跌幅": "+3.41%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=28.87），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.48,
+            "档位": "正常",
+            "今日量(万股)": 26709.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.48（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-3.96%",
+            "MA21": 29.98,
+            "距20日高点": "-9.38%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -4.0%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 28.79,
+        "chg_pct": 3.4124,
+        "ma5": 28.87,
+        "ma21": 29.9776,
+        "ma13w": 31.9323,
+        "dif": -0.882381,
+        "dea": -0.78642,
+        "vol_ratio": 1.481,
+        "hi20": 31.77,
+        "drawdown_from_high": -9.3799,
+        "week_incomplete": false
+      },
+      "code": "601899",
+      "name": "紫金矿业",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 84276321162.0,
+        "eps": 2.163,
+        "bps": 7.8439,
+        "roe": 28.3,
+        "gross_margin": 38.4357,
+        "net_margin": 25.934,
+        "debt_ratio": 49.9041,
+        "op_margin": 33.2408,
+        "pe": 9.98,
+        "eps_annualized": 2.884,
+        "pb": 3.67,
+        "text": "（20260930）ROE 28.3%，毛利率 38.4357%，净利率 25.934%，资产负债率 49.9041%，PE 9.98，PB 3.67"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 107.06,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 117.67,
+            "周变化": "-0.34%",
+            "周收盘": 107.06
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.34%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-17.61%",
+            "MA21": 116.78,
+            "距MA21": "-8.33%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-8.3%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.2502,
+            "DIF/价": "-3.04%",
+            "DEA": -2.355
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.0%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -3.2502,
+            "DEA": -2.355,
+            "柱": -1.7905,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 107.06,
+            "MA5": 110.35,
+            "涨跌幅": "+0.09%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=110.35），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.17,
+            "档位": "正常",
+            "今日量(万股)": 5816.9
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.17（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-8.33%",
+            "MA21": 116.78,
+            "距20日高点": "-17.61%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -8.3%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 107.06,
+        "chg_pct": 0.0935,
+        "ma5": 110.35,
+        "ma21": 116.7843,
+        "ma13w": 117.6738,
+        "dif": -3.250242,
+        "dea": -2.355005,
+        "vol_ratio": 1.1716,
+        "hi20": 129.94,
+        "drawdown_from_high": -17.6081,
+        "week_incomplete": false
+      },
+      "code": "002463",
+      "name": "沪电股份",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1150686191.0,
+        "eps": 1.5191,
+        "bps": 9.3481,
+        "roe": 17.38,
+        "gross_margin": 38.7156,
+        "net_margin": 21.3534,
+        "debt_ratio": 52.199,
+        "op_margin": 24.1595,
+        "pe": 35.24,
+        "eps_annualized": 3.038,
+        "pb": 11.45,
+        "text": "（20260630）ROE 17.38%，毛利率 38.7156%，净利率 21.3534%，资产负债率 52.199%，PE 35.24，PB 11.45"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 266.7,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 336.21,
+            "周变化": "-2.71%",
+            "周收盘": 266.7
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.71%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-26.54%",
+            "MA21": 312.28,
+            "距MA21": "-14.60%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-14.6%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -20.2849,
+            "DIF/价": "-7.61%",
+            "DEA": -16.2573
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.6%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -20.2849,
+            "DEA": -16.2573,
+            "柱": -8.055,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 266.7,
+            "MA5": 272.13,
+            "涨跌幅": "+0.95%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=272.13），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.43,
+            "档位": "正常",
+            "今日量(万股)": 2207.1
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.43（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-14.60%",
+            "MA21": 312.28,
+            "距20日高点": "-26.54%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -14.6%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 266.7,
+        "chg_pct": 0.9539,
+        "ma5": 272.13,
+        "ma21": 312.2843,
+        "ma13w": 336.2077,
+        "dif": -20.284871,
+        "dea": -16.257349,
+        "vol_ratio": 1.4252,
+        "hi20": 363.07,
+        "drawdown_from_high": -26.5431,
+        "week_incomplete": false
+      },
+      "code": "688012",
+      "name": "中微公司",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 684553490.6,
+        "eps": 4.33,
+        "bps": 31.3598,
+        "roe": 11.56,
+        "gross_margin": 39.7417,
+        "net_margin": 41.804,
+        "debt_ratio": 19.7333,
+        "op_margin": 42.9186,
+        "pe": 30.8,
+        "eps_annualized": 8.66,
+        "pb": 8.5,
+        "text": "（20260630）ROE 11.56%，毛利率 39.7417%，净利率 41.804%，资产负债率 19.7333%，PE 30.8，PB 8.5"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 202.0,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 255.33,
+            "周变化": "-2.97%",
+            "周收盘": 202.0
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.97%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-31.01%",
+            "MA21": 234.8,
+            "距MA21": "-13.97%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-14.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -17.6438,
+            "DIF/价": "-8.73%",
+            "DEA": -15.2341
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -8.7%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -17.6438,
+            "DEA": -15.2341,
+            "柱": -4.8194,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 202.0,
+            "MA5": 202.49,
+            "涨跌幅": "+1.64%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=202.49），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.62,
+            "档位": "温和放量",
+            "今日量(万股)": 2724.9
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.62（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-13.97%",
+            "MA21": 234.8,
+            "距20日高点": "-31.01%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -14.0%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 202.0,
+        "chg_pct": 1.6403,
+        "ma5": 202.488,
+        "ma21": 234.8014,
+        "ma13w": 255.3315,
+        "dif": -17.6438,
+        "dea": -15.234108,
+        "vol_ratio": 1.6197,
+        "hi20": 292.78,
+        "drawdown_from_high": -31.0062,
+        "week_incomplete": false
+      },
+      "code": "300604",
+      "name": "长川科技",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 332861122.72,
+        "eps": 1.52,
+        "bps": 8.8967,
+        "roe": 18.52,
+        "gross_margin": 55.482,
+        "net_margin": 27.8187,
+        "debt_ratio": 52.77,
+        "op_margin": 27.2888,
+        "pe": 66.45,
+        "eps_annualized": 3.04,
+        "pb": 22.71,
+        "text": "（20260630）ROE 18.52%，毛利率 55.482%，净利率 27.8187%，资产负债率 52.77%，PE 66.45，PB 22.71"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 537.49,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 657.11,
+            "周变化": "-2.51%",
+            "周收盘": 537.49
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.51%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-22.60%",
+            "MA21": 611.69,
+            "距MA21": "-12.13%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-12.1%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -31.2294,
+            "DIF/价": "-5.81%",
+            "DEA": -26.3019
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -5.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -31.2294,
+            "DEA": -26.3019,
+            "柱": -9.855,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 537.49,
+            "MA5": 556.01,
+            "涨跌幅": "-0.83%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=556.01），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.35,
+            "档位": "正常",
+            "今日量(万股)": 975.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.35（正常），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-12.13%",
+            "MA21": 611.69,
+            "距20日高点": "-22.60%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -12.1%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 537.49,
+        "chg_pct": -0.8321,
+        "ma5": 556.014,
+        "ma21": 611.6886,
+        "ma13w": 657.1123,
+        "dif": -31.229381,
+        "dea": -26.301889,
+        "vol_ratio": 1.3491,
+        "hi20": 694.4,
+        "drawdown_from_high": -22.5965,
+        "week_incomplete": false
+      },
+      "code": "002371",
+      "name": "北方华创",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 3773698817.34,
+        "eps": 4.6486,
+        "bps": 55.8708,
+        "roe": 8.58,
+        "gross_margin": 40.0683,
+        "net_margin": 16.0135,
+        "debt_ratio": 50.2589,
+        "op_margin": 17.3064,
+        "pe": 57.81,
+        "eps_annualized": 9.297,
+        "pb": 9.62,
+        "text": "（20260630）ROE 8.58%，毛利率 40.0683%，净利率 16.0135%，资产负债率 50.2589%，PE 57.81，PB 9.62"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 4.93,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 5.64,
+            "周变化": "-1.16%",
+            "周收盘": 4.93
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.16%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-21.87%",
+            "MA21": 5.47,
+            "距MA21": "-9.84%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-9.8%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.2183,
+            "DIF/价": "-4.43%",
+            "DEA": -0.1681
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -4.4%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -0.2183,
+            "DEA": -0.1681,
+            "柱": -0.1004,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 4.93,
+            "MA5": 4.99,
+            "涨跌幅": "+1.44%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=4.99），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.51,
+            "档位": "温和放量",
+            "今日量(万股)": 107216.4
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.51（温和放量），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-9.84%",
+            "MA21": 5.47,
+            "距20日高点": "-21.87%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -9.8%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 4.93,
+        "chg_pct": 1.4403,
+        "ma5": 4.988,
+        "ma21": 5.4681,
+        "ma13w": 5.6385,
+        "dif": -0.218299,
+        "dea": -0.168078,
+        "vol_ratio": 1.5131,
+        "hi20": 6.31,
+        "drawdown_from_high": -21.87,
+        "week_incomplete": false
+      },
+      "code": "000725",
+      "name": "京东方Ａ",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 22744634093.0,
+        "eps": 0.14,
+        "bps": 3.594,
+        "roe": 3.82,
+        "gross_margin": 15.0316,
+        "net_margin": 4.8781,
+        "debt_ratio": 52.692,
+        "op_margin": 7.0422,
+        "pe": 17.61,
+        "eps_annualized": 0.28,
+        "pb": 1.37,
+        "text": "（20260630）ROE 3.82%，毛利率 15.0316%，净利率 4.8781%，资产负债率 52.692%，PE 17.61，PB 1.37"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 32.9,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 40.39,
+            "周变化": "-0.77%",
+            "周收盘": 32.9
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.77%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-31.47%",
+            "MA21": 38.69,
+            "距MA21": "-14.96%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-15.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -2.5692,
+            "DIF/价": "-7.81%",
+            "DEA": -2.0425
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -2.5692,
+            "DEA": -2.0425,
+            "柱": -1.0533,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 32.9,
+            "MA5": 33.69,
+            "涨跌幅": "+1.04%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=33.69），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.29,
+            "档位": "正常",
+            "今日量(万股)": 16146.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.29（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-14.96%",
+            "MA21": 38.69,
+            "距20日高点": "-31.47%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -15.0%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 32.9,
+        "chg_pct": 1.0442,
+        "ma5": 33.686,
+        "ma21": 38.6862,
+        "ma13w": 40.3923,
+        "dif": -2.569188,
+        "dea": -2.042517,
+        "vol_ratio": 1.2923,
+        "hi20": 48.01,
+        "drawdown_from_high": -31.4726,
+        "week_incomplete": false
+      },
+      "code": "600176",
+      "name": "中国巨石",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260930",
+        "ocf": 3957039966.49,
+        "eps": 1.3422,
+        "bps": 8.5666,
+        "roe": 16.11,
+        "gross_margin": 45.6224,
+        "net_margin": 30.3515,
+        "debt_ratio": 41.2763,
+        "op_margin": 36.4531,
+        "pe": 18.38,
+        "eps_annualized": 1.79,
+        "pb": 3.84,
+        "text": "（20260930）ROE 16.11%，毛利率 45.6224%，净利率 30.3515%，资产负债率 41.2763%，PE 18.38，PB 3.84"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 925.15,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 1427.67,
+            "周变化": "-2.44%",
+            "周收盘": 925.15
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.44%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-50.97%",
+            "MA21": 1350.39,
+            "距MA21": "-31.49%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-31.5%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -177.4368,
+            "DIF/价": "-19.18%",
+            "DEA": -135.3214
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -19.2%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -177.4368,
+            "DEA": -135.3214,
+            "柱": -84.2308,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 925.15,
+            "MA5": 975.72,
+            "涨跌幅": "+0.56%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=975.72），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.3,
+            "档位": "正常",
+            "今日量(万股)": 558.8
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.30（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-31.49%",
+            "MA21": 1350.39,
+            "距20日高点": "-50.97%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -31.5%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 925.15,
+        "chg_pct": 0.5598,
+        "ma5": 975.72,
+        "ma21": 1350.39,
+        "ma13w": 1427.6731,
+        "dif": -177.436837,
+        "dea": -135.321446,
+        "vol_ratio": 1.2983,
+        "hi20": 1886.91,
+        "drawdown_from_high": -50.9701,
+        "week_incomplete": false
+      },
+      "code": "688498",
+      "name": "源杰科技",
+      "board": "科创板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 487674095.41,
+        "eps": 4.89,
+        "bps": 25.2344,
+        "roe": 22.1,
+        "gross_margin": 80.4247,
+        "net_margin": 65.6188,
+        "debt_ratio": 20.0637,
+        "op_margin": 75.1724,
+        "pe": 94.6,
+        "eps_annualized": 9.78,
+        "pb": 36.66,
+        "text": "（20260630）ROE 22.1%，毛利率 80.4247%，净利率 65.6188%，资产负债率 20.0637%，PE 94.6，PB 36.66"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 128.63,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 168.99,
+            "周变化": "-2.58%",
+            "周收盘": 128.63
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.58%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-35.52%",
+            "MA21": 156.73,
+            "距MA21": "-17.93%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-17.9%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -13.1878,
+            "DIF/价": "-10.25%",
+            "DEA": -11.1418
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -10.3%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -13.1878,
+            "DEA": -11.1418,
+            "柱": -4.0919,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 128.63,
+            "MA5": 131.7,
+            "涨跌幅": "+0.81%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=131.70），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.48,
+            "档位": "正常",
+            "今日量(万股)": 3567.7
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.48（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-17.93%",
+            "MA21": 156.73,
+            "距20日高点": "-35.52%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -17.9%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 128.63,
+        "chg_pct": 0.8072,
+        "ma5": 131.702,
+        "ma21": 156.7324,
+        "ma13w": 168.9862,
+        "dif": -13.187779,
+        "dea": -11.141815,
+        "vol_ratio": 1.4755,
+        "hi20": 199.48,
+        "drawdown_from_high": -35.5173,
+        "week_incomplete": false
+      },
+      "code": "002281",
+      "name": "光迅科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -1236139694.41,
+        "eps": 0.73,
+        "bps": 17.4612,
+        "roe": 5.24,
+        "gross_margin": 25.5256,
+        "net_margin": 8.6694,
+        "debt_ratio": 37.0238,
+        "op_margin": 9.9567,
+        "pe": 88.1,
+        "eps_annualized": 1.46,
+        "pb": 7.37,
+        "text": "（20260630）ROE 5.24%，毛利率 25.5256%，净利率 8.6694%，资产负债率 37.0238%，PE 88.1，PB 7.37"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 244.68,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 333.47,
+            "周变化": "-2.81%",
+            "周收盘": 244.68
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -2.81%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-31.62%",
+            "MA21": 288.86,
+            "距MA21": "-15.30%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-15.3%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -29.8554,
+            "DIF/价": "-12.20%",
+            "DEA": -28.474
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -12.2%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -29.8554,
+            "DEA": -28.474,
+            "柱": -2.7629,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 244.68,
+            "MA5": 244.69,
+            "涨跌幅": "+1.11%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=244.69），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.44,
+            "档位": "正常",
+            "今日量(万股)": 1740.6
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.44（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-15.30%",
+            "MA21": 288.86,
+            "距20日高点": "-31.62%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -15.3%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 244.68,
+        "chg_pct": 1.1074,
+        "ma5": 244.692,
+        "ma21": 288.8648,
+        "ma13w": 333.4708,
+        "dif": -29.855442,
+        "dea": -28.473985,
+        "vol_ratio": 1.4435,
+        "hi20": 357.8,
+        "drawdown_from_high": -31.6154,
+        "week_incomplete": false
+      },
+      "code": "301308",
+      "name": "江波龙",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -3151429914.77,
+        "eps": 25.2,
+        "bps": 43.9242,
+        "roe": 79.03,
+        "gross_margin": 58.9023,
+        "net_margin": 44.4931,
+        "debt_ratio": 56.1264,
+        "op_margin": 52.8515,
+        "pe": 4.85,
+        "eps_annualized": 50.4,
+        "pb": 5.57,
+        "text": "（20260630）ROE 79.03%，毛利率 58.9023%，净利率 44.4931%，资产负债率 56.1264%，PE 4.85，PB 5.57"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 194.82,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 244.61,
+            "周变化": "-1.11%",
+            "周收盘": 194.82
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -1.11%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-30.07%",
+            "MA21": 235.46,
+            "距MA21": "-17.26%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-17.3%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.7746,
+            "DIF/价": "-7.58%",
+            "DEA": -10.8837
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -7.6%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -14.7746,
+            "DEA": -10.8837,
+            "柱": -7.7817,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 194.82,
+            "MA5": 205.0,
+            "涨跌幅": "-1.11%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=205.00），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.21,
+            "档位": "正常",
+            "今日量(万股)": 2118.2
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.21（正常），量能不够，发令枪还没响（注意：今日下跌，放量可能是出货）"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-17.26%",
+            "MA21": 235.46,
+            "距20日高点": "-30.07%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -17.3%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 194.82,
+        "chg_pct": -1.1066,
+        "ma5": 205.0,
+        "ma21": 235.4576,
+        "ma13w": 244.6138,
+        "dif": -14.774555,
+        "dea": -10.883715,
+        "vol_ratio": 1.2095,
+        "hi20": 278.6,
+        "drawdown_from_high": -30.0718,
+        "week_incomplete": false
+      },
+      "code": "300857",
+      "name": "协创数据",
+      "board": "创业板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 1824900459.11,
+        "eps": 3.8,
+        "bps": 12.3868,
+        "roe": 34.31,
+        "gross_margin": 25.1497,
+        "net_margin": 14.6239,
+        "debt_ratio": 86.789,
+        "op_margin": 15.7838,
+        "pe": 25.63,
+        "eps_annualized": 7.6,
+        "pb": 15.73,
+        "text": "（20260630）ROE 34.31%，毛利率 25.1497%，净利率 14.6239%，资产负债率 86.789%，PE 25.63，PB 15.73"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 158.38,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 186.12,
+            "周变化": "-0.34%",
+            "周收盘": 158.38
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 -0.34%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-32.60%",
+            "MA21": 190.55,
+            "距MA21": "-16.88%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-16.9%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -10.8121,
+            "DIF/价": "-6.83%",
+            "DEA": -6.6652
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -6.8%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -10.8121,
+            "DEA": -6.6652,
+            "柱": -8.294,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 158.38,
+            "MA5": 163.01,
+            "涨跌幅": "+1.36%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=163.01），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.31,
+            "档位": "正常",
+            "今日量(万股)": 2538.7
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.31（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-16.88%",
+            "MA21": 190.55,
+            "距20日高点": "-32.60%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -16.9%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 158.38,
+        "chg_pct": 1.3632,
+        "ma5": 163.006,
+        "ma21": 190.551,
+        "ma13w": 186.1185,
+        "dif": -10.812136,
+        "dea": -6.665156,
+        "vol_ratio": 1.3108,
+        "hi20": 235.0,
+        "drawdown_from_high": -32.6043,
+        "week_incomplete": false
+      },
+      "code": "603083",
+      "name": "剑桥科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": -1113134302.58,
+        "eps": 0.93,
+        "bps": 25.432,
+        "roe": 4.32,
+        "gross_margin": 30.7698,
+        "net_margin": 10.127,
+        "debt_ratio": 30.9405,
+        "op_margin": 10.2141,
+        "pe": 85.15,
+        "eps_annualized": 1.86,
+        "pb": 6.23,
+        "text": "（20260630）ROE 4.32%，毛利率 30.7698%，净利率 10.127%，资产负债率 30.9405%，PE 85.15，PB 6.23"
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "close": 34.42,
+      "lights": [
+        {
+          "key": "weekly_trend",
+          "name": "周线趋势(MA13周)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "MA13周": 36.54,
+            "周变化": "+0.13%",
+            "周收盘": 34.42
+          },
+          "rule": "MA13周 本周 > 上周，且收盘站上 MA13周（只用已完成周）",
+          "advice": "MA13周 周变化 +0.13%，中期趋势未确认，先不碰"
+        },
+        {
+          "key": "pullback",
+          "name": "日线回踩",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距20日高点": "-29.41%",
+            "MA21": 39.12,
+            "距MA21": "-12.02%"
+          },
+          "rule": "从 20 日高点回撤 ≥ 3.0%，且未跌破 MA21",
+          "advice": "已跌破 MA21（-12.0%），趋势走坏，不接"
+        },
+        {
+          "key": "zero_axis",
+          "name": "MACD 贴近 0 轴",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -1.0789,
+            "DIF/价": "-3.13%",
+            "DEA": -0.4233
+          },
+          "rule": "|DIF / 收盘价| ≤ 1.5%",
+          "advice": "DIF 低于零轴 -3.1%，仍在空头区间"
+        },
+        {
+          "key": "golden_cross",
+          "name": "MACD 金叉",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "DIF": -1.0789,
+            "DEA": -0.4233,
+            "柱": -1.3112,
+            "状态": "空头排列"
+          },
+          "rule": "DIF 上穿 DEA，发生在 3 个交易日内，且当前仍 DIF>DEA",
+          "advice": "MACD 空头排列，等 DIF 上穿 DEA"
+        },
+        {
+          "key": "steady",
+          "name": "企稳拐头",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "收盘": 34.42,
+            "MA5": 35.17,
+            "涨跌幅": "+0.26%"
+          },
+          "rule": "收阳，且收盘站上 MA5",
+          "advice": "未收阳或未站上 MA5（MA5=35.17），还没企稳"
+        },
+        {
+          "key": "volume",
+          "name": "成交量放大",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "量比": 1.21,
+            "档位": "正常",
+            "今日量(万股)": 11367.0
+          },
+          "rule": "今日量 / 前 5 日均量（剔除 0 量日）≥ 2.5",
+          "advice": "量比 1.21（正常），量能不够，发令枪还没响"
+        },
+        {
+          "key": "risk",
+          "name": "风控(MA21)",
+          "color": "red",
+          "passed": false,
+          "value": {
+            "距MA21": "-12.02%",
+            "MA21": 39.12,
+            "距20日高点": "-29.41%"
+          },
+          "rule": "收盘 ≥ MA21 可持有；跌破离场；浮盈>15% 且回撤>10% 止盈",
+          "advice": "跌破 MA21 -12.0%，按纪律离场"
+        }
+      ],
+      "green_count": 0,
+      "total": 7,
+      "entry_green": 0,
+      "entry_total": 6,
+      "entry_signal": false,
+      "core_missing": [
+        "周线趋势(MA13周)",
+        "日线回踩",
+        "MACD 金叉",
+        "成交量放大"
+      ],
+      "verdict": "回避",
+      "verdict_reason": "暂不关注：入场仅 0/6",
+      "summary": "暂不关注：入场仅 0/6",
+      "provider": "sina",
+      "raw": {
+        "close": 34.42,
+        "chg_pct": 0.2622,
+        "ma5": 35.17,
+        "ma21": 39.1229,
+        "ma13w": 36.5446,
+        "dif": -1.078895,
+        "dea": -0.423316,
+        "vol_ratio": 1.2116,
+        "hi20": 48.76,
+        "drawdown_from_high": -29.4094,
+        "week_incomplete": false
+      },
+      "code": "002436",
+      "name": "兴森科技",
+      "board": "主板",
+      "recommended": false,
+      "fundamentals": {
+        "period": "20260630",
+        "ocf": 2840926.52,
+        "eps": 0.07,
+        "bps": 3.3174,
+        "roe": 2.03,
+        "gross_margin": 20.9549,
+        "net_margin": -0.1386,
+        "debt_ratio": 64.5529,
+        "op_margin": 0.7225,
+        "pe": 245.86,
+        "eps_annualized": 0.14,
+        "pb": 10.38,
+        "text": "（20260630）ROE 2.03%，毛利率 20.9549%，净利率 -0.1386%，资产负债率 64.5529%，PE 245.86，PB 10.38"
+      }
+    }
+  ]
+}
