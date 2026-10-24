@@ -17,7 +17,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 200
     permissions:
       contents: write
     env:
@@ -35,10 +35,24 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Scan market
+        timeout-minutes: 170
         env:
           NO_PROXY: '*'
         run: |
-          python scan_market.py --top "${{ github.event.inputs.limit || '5000' }}"
+          # 165 分钟软时限：到点自动输出 partial，绝不空手而归
+          python scan_market.py \
+            --top "${{ github.event.inputs.limit || '5000' }}" \
+            --deadline-min 165 \
+            --limit 30
+
+      - name: Upload partial (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signals-partial-${{ github.run_id }}
+          path: out/*.json
+          retention-days: 3
+          if-no-files-found: ignore
 
       - name: Show health
         run: |
@@ -55,14 +69,17 @@ jobs:
                 '| trade_date', d.get('trade_date'),
                 '| fresh', d.get('fresh_count'),
                 '| size', f'{size/1048576:.1f} MiB')
-          if d.get('status') == 'degraded':
+          st = d.get('status')
+          if st == 'degraded':
               raise SystemExit('数据源大面积失败（degraded），本次不提交')
           if size > 18 * 1048576:
               raise SystemExit(f'产出 {size/1048576:.1f} MiB 超过 18MB（jsDelivr 单文件上限 20MB），拒绝提交')
+          if st == 'partial':
+              print('::warning::本次为 partial（到达时限），数据仍可用但不完整')
           td = str(d.get('trade_date') or '')
           today = datetime.datetime.now().strftime('%Y-%m-%d')
           if td and td[:10] != today:
-              print(f'::warning::trade_date={td} 与今天 {today} 不一致（节假日可忽略）')
+              print(f'::warning::trade_date={td} 与今天 {today} 不一致（节假日/停盘可忽略）')
           PY
 
       - name: Commit results
