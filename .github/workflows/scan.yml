@@ -1,0 +1,61 @@
+name: daily-scan
+
+# 每个交易日 15:30（北京时间）自动扫全市场；也可手动触发
+on:
+  schedule:
+    - cron: '35 7 * * 1-5'   # UTC 07:35 = 北京 15:35，收盘后
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '扫描数量（测试填 50，全市场填 5000）'
+        default: '5000'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Scan market
+        env:
+          # GitHub 海外 runner 走直连，不需要代理
+          NO_PROXY: '*'
+        run: |
+          python scan_market.py --top "${{ github.event.inputs.limit || '5000' }}" --limit 30
+
+      - name: Show health
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p = pathlib.Path('out/daily_signals.json')
+          if not p.exists():
+              raise SystemExit('没有产出 daily_signals.json，扫描失败')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          print('status', d.get('status'), '| universe', d.get('universe'),
+                '| scanned', d.get('scanned'), '| failed', d.get('failed'),
+                '| recommended', d.get('recommended_count'))
+          if d.get('status') == 'degraded':
+              raise SystemExit('数据源大面积失败（degraded），本次不提交')
+          PY
+
+      - name: Commit results
+        run: |
+          git config user.name "tiandao-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f out/daily_signals.json
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "chore(signals): $(date -u +%F) scan"
+            git push
+          fi
