@@ -112,6 +112,9 @@ jobs:
               raise SystemExit(f"只扫到 {d.get('scanned')} 只，数据不可信，不提交")
           if size > 18 * 1048576:
               raise SystemExit(f'产出 {size/1048576:.1f} MiB 超过 18MB（jsDelivr 上限 20MB）')
+          ap = pathlib.Path('out/all_signals.json')
+          if ap.exists():
+              print('all_signals.json', f'{ap.stat().st_size/1024:.0f} KB')
           td = str(d.get('trade_date') or '')
           today = datetime.datetime.now().strftime('%Y-%m-%d')
           if td and td[:10] != today:
@@ -122,7 +125,7 @@ jobs:
         run: |
           git config user.name "tiandao-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -f out/daily_signals.json
+          git add -f out/daily_signals.json out/all_signals.json
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0
@@ -133,4 +136,5 @@ jobs:
       - name: Purge jsDelivr cache
         run: |
           curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/daily_signals.json" || true
+          curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/all_signals.json" || true
           echo "jsDelivr 缓存已请求清除"
