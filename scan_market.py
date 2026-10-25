@@ -92,6 +92,13 @@ def _split_payload(out: dict) -> tuple[dict, dict]:
 
     daily = dict(out)
     daily["items"] = daily_items
+    # 带上信号复盘摘要（由 track_signals.py 生成）
+    try:
+        _perf = json.loads((OUT_DIR / "track" / "perf.json").read_text(encoding="utf-8"))
+        if _perf.get("summary"):
+            daily["track"] = _perf["summary"]
+    except Exception:  # noqa: BLE001
+        pass
     daily["stats"] = {
         "entry_dist": dist,
         "light_pass": light_pass,
