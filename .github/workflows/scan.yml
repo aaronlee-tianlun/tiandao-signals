@@ -33,20 +33,43 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Gate — 今天是否已有数据
+      - name: Gate — 最近一个交易日是否已有数据
         id: gate
+        env:
+          FORCE: ${{ github.event.inputs.force }}
         run: |
-          YMD=$(date +%Y%m%d)
-          if [ -f "out/daily_signals_${YMD}.json" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "今天已有数据（$YMD），本次跳过"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "需要扫描（$YMD）"
-          fi
+          python - <<'PY'
+          import json, pathlib, datetime, os
+          p = pathlib.Path('out/daily_signals.json')
+          force = os.environ.get('FORCE', '').lower() == 'true'
+          today = datetime.date.today()
+          expected = today
+          while expected.weekday() >= 5:          # 周末回退到最近周五
+              expected -= datetime.timedelta(days=1)
+          skip = False
+          reason = '无历史数据'
+          if force:
+              reason = '手动强制重跑'
+          if p.exists():
+              try:
+                  d = json.loads(p.read_text(encoding='utf-8'))
+                  td, scanned = d.get('trade_date'), int(d.get('scanned') or 0)
+                  if td == expected.isoformat() and scanned >= 1000:
+                      skip = True
+                      reason = f'已有 {td} 的全市场数据（{scanned} 只）'
+                  else:
+                      reason = f'需要刷新：现有 {td}（{scanned} 只），目标 {expected}'
+              except Exception as e:                # noqa: BLE001
+                  reason = f'读取失败 {e}'
+              if force:
+                  skip = False
+          print(reason)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+              f.write('skip=' + ('true' if skip else 'false') + '\n')
+          PY
 
       - uses: actions/setup-python@v5
-        if: steps.gate.outputs.skip != 'true'
+        if: steps.gate.outputs.skip != 'true' || github.event.inputs.force == 'true'
         with:
           python-version: '3.11'
 
@@ -91,18 +114,43 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Gate — 今天是否已有数据
+      - name: Gate — 最近一个交易日是否已有数据
         id: gate
+        env:
+          FORCE: ${{ github.event.inputs.force }}
         run: |
-          YMD=$(date +%Y%m%d)
-          if [ -f "out/daily_signals_${YMD}.json" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
+          python - <<'PY'
+          import json, pathlib, datetime, os
+          p = pathlib.Path('out/daily_signals.json')
+          force = os.environ.get('FORCE', '').lower() == 'true'
+          today = datetime.date.today()
+          expected = today
+          while expected.weekday() >= 5:          # 周末回退到最近周五
+              expected -= datetime.timedelta(days=1)
+          skip = False
+          reason = '无历史数据'
+          if force:
+              reason = '手动强制重跑'
+          if p.exists():
+              try:
+                  d = json.loads(p.read_text(encoding='utf-8'))
+                  td, scanned = d.get('trade_date'), int(d.get('scanned') or 0)
+                  if td == expected.isoformat() and scanned >= 1000:
+                      skip = True
+                      reason = f'已有 {td} 的全市场数据（{scanned} 只）'
+                  else:
+                      reason = f'需要刷新：现有 {td}（{scanned} 只），目标 {expected}'
+              except Exception as e:                # noqa: BLE001
+                  reason = f'读取失败 {e}'
+              if force:
+                  skip = False
+          print(reason)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+              f.write('skip=' + ('true' if skip else 'false') + '\n')
+          PY
 
       - uses: actions/setup-python@v5
-        if: steps.gate.outputs.skip != 'true'
+        if: steps.gate.outputs.skip != 'true' || github.event.inputs.force == 'true'
         with:
           python-version: '3.11'
 
