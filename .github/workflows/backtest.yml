@@ -1,0 +1,76 @@
+name: market-backtest
+
+# 手动触发：全市场跑一遍策略回测，出成绩单
+on:
+  workflow_dispatch:
+    inputs:
+      top:
+        description: '回测股票数（5000=全市场）'
+        default: '5000'
+
+jobs:
+  bt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Backtest shard ${{ matrix.shard }}
+        timeout-minutes: 130
+        env:
+          NO_PROXY: '*'
+        run: |
+          python backtest_market.py \
+            --top "${{ github.event.inputs.top || '5000' }}" \
+            --shard "${{ matrix.shard }}/4" \
+            --bars 700 \
+            --deadline-min 110 \
+            --out "out/bt-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bt-${{ matrix.shard }}
+          path: out/bt-${{ matrix.shard }}.json
+          retention-days: 3
+          if-no-files-found: ignore
+
+  publish:
+    needs: bt
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bt-*
+          path: out
+          merge-multiple: true
+      - name: Merge
+        run: |
+          ls -la out/bt-*.json || true
+          python backtest_market.py --merge "out/bt-*.json" --out out/backtest.json
+      - name: Commit
+        run: |
+          git config user.name "tiandao-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -f out/backtest.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(backtest): $(date -u +%F) 全市场回测"
+          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
