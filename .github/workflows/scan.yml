@@ -1,15 +1,18 @@
 name: daily-scan
 
-# 每个交易日 15:50（北京时间）自动扫全市场
-# 4 分片并行（每个 runner 换 IP，避免单 IP 限流），最后一个 job 合并提交
+# 主跑 15:50，补跑 16:50（北京）。补跑会先检查当天数据是否已存在，有就跳过。
 on:
   schedule:
-    - cron: '50 7 * * 1-5'   # UTC 07:50 = 北京 15:50
+    - cron: '50 7 * * 1-5'   # 15:50 北京
+    - cron: '50 8 * * 1-5'   # 16:50 北京（补跑）
   workflow_dispatch:
     inputs:
       limit:
         description: '扫描数量（测试填 500，全市场填 5000）'
         default: '5000'
+      force:
+        description: '强制重跑（忽略"今天已有数据"）'
+        default: 'false'
 
 concurrency:
   group: daily-scan
@@ -18,27 +21,41 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 200
     strategy:
       fail-fast: false
       matrix:
         shard: [0, 1, 2, 3]
     env:
       TZ: Asia/Shanghai
-      SHARDS: '4'
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
 
+      - name: Gate — 今天是否已有数据
+        id: gate
+        run: |
+          YMD=$(date +%Y%m%d)
+          if [ -f "out/daily_signals_${YMD}.json" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "今天已有数据（$YMD），本次跳过"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "需要扫描（$YMD）"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.skip != 'true'
         with:
           python-version: '3.11'
 
       - name: Install deps
+        if: steps.gate.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Scan shard ${{ matrix.shard }}
+        if: steps.gate.outputs.skip != 'true'
         timeout-minutes: 105
         env:
           NO_PROXY: '*'
@@ -52,7 +69,7 @@ jobs:
             --limit 0
 
       - name: Upload shard
-        if: always()
+        if: always() && steps.gate.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: part-${{ matrix.shard }}
@@ -74,14 +91,27 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Gate — 今天是否已有数据
+        id: gate
+        run: |
+          YMD=$(date +%Y%m%d)
+          if [ -f "out/daily_signals_${YMD}.json" ] && [ "${{ github.event.inputs.force }}" != "true" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.skip != 'true'
         with:
           python-version: '3.11'
 
       - name: Install deps
+        if: steps.gate.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Download shards
+        if: steps.gate.outputs.skip != 'true'
         uses: actions/download-artifact@v4
         with:
           pattern: part-*
@@ -89,11 +119,18 @@ jobs:
           merge-multiple: true
 
       - name: Merge shards
+        if: steps.gate.outputs.skip != 'true'
         run: |
-          ls -la out/ || true
+          ls out/part-*.json >/dev/null 2>&1 || { echo "没有分片产出，退出"; exit 1; }
           python scan_market.py --merge "out/part-*.json" --out out/daily_signals.json
 
+      - name: Signal tracking (复盘)
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          python track_signals.py --update || echo "复盘失败，不影响主流程"
+
       - name: Show health
+        if: steps.gate.outputs.skip != 'true'
         run: |
           python - <<'PY'
           import json, pathlib, datetime
@@ -106,22 +143,16 @@ jobs:
                 '| scanned', d.get('scanned'), '| failed', d.get('failed'),
                 '| recommended', d.get('recommended_count'),
                 '| trade_date', d.get('trade_date'),
-                '| fresh', d.get('fresh_count'),
                 '| size', f'{size/1048576:.1f} MiB')
+          print('复盘:', json.dumps(d.get('track') or {}, ensure_ascii=False))
           if d.get('scanned', 0) < 50:
               raise SystemExit(f"只扫到 {d.get('scanned')} 只，数据不可信，不提交")
           if size > 18 * 1048576:
-              raise SystemExit(f'产出 {size/1048576:.1f} MiB 超过 18MB（jsDelivr 上限 20MB）')
-          ap = pathlib.Path('out/all_signals.json')
-          if ap.exists():
-              print('all_signals.json', f'{ap.stat().st_size/1024:.0f} KB')
-          td = str(d.get('trade_date') or '')
-          today = datetime.datetime.now().strftime('%Y-%m-%d')
-          if td and td[:10] != today:
-              print(f'::warning::trade_date={td} 与今天 {today} 不一致（非交易日可忽略）')
+              raise SystemExit(f'产出超过 18MB（jsDelivr 上限 20MB）')
           PY
 
       - name: Dated copy
+        if: steps.gate.outputs.skip != 'true'
         run: |
           python - <<'PY'
           import json, pathlib, shutil, datetime
@@ -132,29 +163,43 @@ jobs:
               src = pathlib.Path(f'out/{n}.json')
               if src.exists():
                   shutil.copyfile(src, pathlib.Path(f'out/{n}_{ymd}.json'))
-                  print('dated', n, ymd)
           keep = {(datetime.date.today() - datetime.timedelta(days=i)).strftime('%Y%m%d') for i in range(7)}
           for f in pathlib.Path('out').glob('*_20*.json'):
-              ymd2 = f.stem.split('_')[-1]
-              if ymd2 not in keep:
+              if f.stem.split('_')[-1] not in keep:
                   f.unlink()
-                  print('cleanup', f.name)
+          for f in pathlib.Path('out/track').glob('2*.json'):
+              if f.stem not in keep and f.stem != 'perf':
+                  f.unlink()
           PY
 
       - name: Commit results
+        if: steps.gate.outputs.skip != 'true'
         run: |
           git config user.name "tiandao-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add -f out/daily_signals.json out/all_signals.json 'out/*_20*.json'
+          git add -f out/daily_signals.json out/all_signals.json 'out/*_20*.json' out/track 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0
           fi
-          git commit -m "chore(signals): $(date -u +%F) scan"
+          git commit -m "chore(signals): $(date -u +%F) scan + track"
           git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
 
       - name: Purge jsDelivr cache
+        if: steps.gate.outputs.skip != 'true'
         run: |
-          curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/daily_signals.json" || true
-          curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/all_signals.json" || true
-          echo "jsDelivr 缓存已请求清除"
+          YMD=$(date +%Y%m%d)
+          for f in daily_signals.json all_signals.json "daily_signals_${YMD}.json"; do
+            curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/out/$f" >/dev/null 2>&1 || true
+          done
+          echo "缓存清除请求已发送"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### 天道每日扫描" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.gate.outputs.skip }}" = "true" ]; then
+            echo "今天已有数据，本次跳过（补跑机制生效）" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "扫描完成，产出见 artifacts" >> $GITHUB_STEP_SUMMARY
+          fi
