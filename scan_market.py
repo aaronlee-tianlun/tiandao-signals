@@ -73,8 +73,32 @@ def _split_payload(out: dict) -> tuple[dict, dict]:
     items = out.get("items") or []
     daily_items = [x for x in items
                    if int(x.get("entry_green") or 0) >= 4 or x.get("recommended")]
+    # 全市场统计（在过滤前算，App 直接读，避免用被裁剪的样本当分母）
+    dist = {str(i): 0 for i in range(7)}
+    light_pass: dict[str, int] = {}
+    light_name: dict[str, str] = {}
+    for x in items:
+        g = int(x.get("entry_green") or 0)
+        if 0 <= g <= 6:
+            dist[str(g)] += 1
+        for lt in x.get("lights") or []:
+            k = lt.get("key")
+            if not k:
+                continue
+            light_name[k] = lt.get("name", k)
+            light_pass.setdefault(k, 0)
+            if lt.get("passed"):
+                light_pass[k] += 1
+
     daily = dict(out)
     daily["items"] = daily_items
+    daily["stats"] = {
+        "entry_dist": dist,
+        "light_pass": light_pass,
+        "light_name": light_name,
+        "light_total": len(items),
+        "sample": len(daily_items),
+    }
     daily["universe_full"] = out.get("universe")
     daily["scanned_full"] = out.get("scanned")
     daily["filter_note"] = "daily 只含入场灯>=4（含全部6/6推荐）；全市场精简版见 all_signals.json"
